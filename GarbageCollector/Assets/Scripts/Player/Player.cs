@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public static Player Instance { get; private set; }
     public enum Weaption
     {
         none,
@@ -24,8 +25,11 @@ public class Player : MonoBehaviour
     [SerializeField] LayerMask trashLayer, treeLayer;
 
     [SerializeField] SpriteRenderer plantTreeRangeSp;
-    
 
+    private void Awake()
+    {
+        Instance = this;
+    }
     private void Start()
     {
         isPlantTree = false;
