@@ -26,6 +26,7 @@ public class Plant : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        Debug.Log(isMature);
         if (Time.time - timePlant<=timeToGrow+0.2f)
         {
             if (Time.time - timePlant >= timeToGrow / 2 && Time.time - timePlant < timeToGrow)
