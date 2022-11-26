@@ -12,4 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17ceaf8ebbbc6c049bda046852ac9edc, type: 3}
   m_Name: Test
   m_EditorClassIdentifier: 
-  Garbages: []
+  Garbages:
+  - {fileID: 11400000, guid: c45245de3bf88a0469a8dadd1efd75fd, type: 2}
+  - {fileID: 11400000, guid: a336590cf509d37499fa682f7f9652da, type: 2}
+  - {fileID: 11400000, guid: d66aaaf23bfc2cc4e896ee5e916a91fd, type: 2}
+  - {fileID: 11400000, guid: 76c05417dbc0fde4486544d3deb20955, type: 2}
+  - {fileID: 11400000, guid: 7400f94b109f9ca43a2a7de4db2cd40d, type: 2}
+  - {fileID: 11400000, guid: efa2ce491b577314183ad6707811cdf5, type: 2}
+  - {fileID: 11400000, guid: 4e4b96fd0f453634eb0caca94c28c564, type: 2}

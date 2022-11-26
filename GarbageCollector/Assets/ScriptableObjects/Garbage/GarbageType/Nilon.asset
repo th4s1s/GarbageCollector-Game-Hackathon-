@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Nilon
   m_EditorClassIdentifier: 
   ID: 
-  Icon: {fileID: 0}
-  Price: 0
+  Icon: {fileID: 21300000, guid: 50578db9a30977e41a9c7fc96897c7ca, type: 3}
+  Price: 7
   Type: 0
-  PollutionAmount: 0
+  PollutionAmount: 7

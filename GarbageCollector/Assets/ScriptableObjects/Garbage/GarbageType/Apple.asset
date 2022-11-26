@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Apple
   m_EditorClassIdentifier: 
   ID: 
-  Icon: {fileID: 0}
-  Price: 0
+  Icon: {fileID: 21300000, guid: 1755f4a939f89534a83e367d71292ebf, type: 3}
+  Price: 2
   Type: 0
-  PollutionAmount: 0
+  PollutionAmount: 2

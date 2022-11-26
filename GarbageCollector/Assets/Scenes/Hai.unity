@@ -3040,7 +3040,7 @@ GameObject:
   - component: {fileID: 492340241}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3101,7 +3101,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 492340236}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -2.18, y: -1.69, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1380232209}
@@ -4020,7 +4020,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1380232208}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.22, y: -0.58, z: 0}
   m_LocalScale: {x: 0.4, y: 0.4, z: 1}
   m_Children: []
   m_Father: {fileID: 492340239}
@@ -4076,7 +4076,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!1 &1569727985
 GameObject:
   m_ObjectHideFlags: 0
@@ -4109,7 +4109,7 @@ MonoBehaviour:
   spawnTime: 1
   spawnZoneX: {x: -3, y: 3}
   spawnZoneY: {x: -3, y: 3}
-  spawnerData: {fileID: 11400000, guid: f677fbcc77956a844b903d7ba21ef126, type: 2}
+  spawnerData: {fileID: 11400000, guid: cbb928f5c8e41574c9a8226067b6f51f, type: 2}
   garbageTemplate: {fileID: 3916878539540881182, guid: 357707dfa90ecf646a479bebaa9ee019, type: 3}
   pollutionMeter: {fileID: 1892980378}
   maxPollution: 100
@@ -5337,17 +5337,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3916878539540881170, guid: 357707dfa90ecf646a479bebaa9ee019, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: d3f0014088283c94ebd6ef7d2bf67a5d, type: 3}
+    - target: {fileID: 3916878539540881170, guid: 357707dfa90ecf646a479bebaa9ee019, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3916878539540881171, guid: 357707dfa90ecf646a479bebaa9ee019, type: 3}
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3916878539540881171, guid: 357707dfa90ecf646a479bebaa9ee019, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.78125
+      value: -2.3
       objectReference: {fileID: 0}
     - target: {fileID: 3916878539540881171, guid: 357707dfa90ecf646a479bebaa9ee019, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.3125
+      value: -2.53
       objectReference: {fileID: 0}
     - target: {fileID: 3916878539540881171, guid: 357707dfa90ecf646a479bebaa9ee019, type: 3}
       propertyPath: m_LocalPosition.z

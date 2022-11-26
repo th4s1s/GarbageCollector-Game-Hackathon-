@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Glass
   m_EditorClassIdentifier: 
   ID: 
-  Icon: {fileID: 0}
-  Price: 0
-  Type: 0
-  PollutionAmount: 0
+  Icon: {fileID: 21300000, guid: 9e965c8b8df3be1408a9c0cb43d508fc, type: 3}
+  Price: 4
+  Type: 1
+  PollutionAmount: 4
