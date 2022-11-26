@@ -29,6 +29,8 @@ public class Player : MonoBehaviour
     public int treeID;
     public bool isNear;
 
+    [SerializeField] ParticleSystem collectEffect;
+
     private void Awake()
     {
         Instance = this;
@@ -107,6 +109,7 @@ public class Player : MonoBehaviour
         if (obj.GetComponent<Garbage>().id == "6") idx = 6;
         trashCountList[idx]++;
         currentTrash++;
+        Instantiate(collectEffect, transform.position, Quaternion.identity);
         TrashInventory.Instance.UpdateTrashCount(idx);
         GarbageSpawner.Instance.ChangePollutionMeter(-obj.GetComponent<Garbage>().pollutionAmount);
         Destroy(obj);
@@ -134,6 +137,7 @@ public class Player : MonoBehaviour
         if (treeCountList[i]>0) 
         {
             Instantiate(treeList[i], transform.position, Quaternion.identity);
+            Instantiate(collectEffect, transform.position, Quaternion.identity);
             treeCountList[i]--;
         }
     }

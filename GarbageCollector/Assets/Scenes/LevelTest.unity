@@ -5718,6 +5718,7 @@ MonoBehaviour:
   treeCountList: 00000000000000000000000000000000
   treeID: 0
   isNear: 0
+  collectEffect: {fileID: 2546103190046960869, guid: 58ac275275f7227418a577acdde8f9a4, type: 3}
 --- !u!50 &94529543
 Rigidbody2D:
   serializedVersion: 4
@@ -11638,6 +11639,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxOxy: 100
+  oxy: 60
   gameOverPanel: {fileID: 1112743249}
   flashRiseObj: {fileID: 1191131486}
   grass2Tilemap: {fileID: 1523564399}
@@ -13310,7 +13312,7 @@ TilemapRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
-  m_ChunkCullingBounds: {x: 0.5, y: 1, z: 0}
+  m_ChunkCullingBounds: {x: 0, y: 1, z: 0}
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 0
@@ -13718,9 +13720,9 @@ Tilemap:
   - m_RefCount: 36
     m_Data: {fileID: 21300000, guid: 21feb6e5aa6e43340943c3bec06cfc49, type: 3}
   - m_RefCount: 1
-    m_Data: {fileID: 21300000, guid: 8e5b65d693292c84d97ddcc91e02355b, type: 3}
+    m_Data: {fileID: 21300000, guid: 7d78d341c6930494cb7af28ed8ae2344, type: 3}
   - m_RefCount: 1
-    m_Data: {fileID: 21300000, guid: 4d501cc3150aad74fad510da81ef9030, type: 3}
+    m_Data: {fileID: 21300000, guid: ff851635bd7a20144b6d24d152059e3b, type: 3}
   m_TileMatrixArray:
   - m_RefCount: 38
     m_Data:
