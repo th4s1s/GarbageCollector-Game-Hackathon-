@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 94ab938cb176cc54a996f437f4a3552d, type: 3}
-  m_Name: Nilon
+  m_Name: Id 0
   m_EditorClassIdentifier: 
-  ID: 6
-  Icon: {fileID: 0}
-  Price: 0
-  Type: 0
-  PollutionAmount: 0
+  ID: 0
+  Icon: {fileID: 21300000, guid: 50578db9a30977e41a9c7fc96897c7ca, type: 3}
+  Price: 10
+  Type: 1
+  PollutionAmount: 1

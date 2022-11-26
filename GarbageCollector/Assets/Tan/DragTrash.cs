@@ -75,15 +75,31 @@ public class DragTrash : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
         RectTransformUtility.ScreenPointToLocalPointInRectangle(myCanvas.transform as RectTransform, Input.mousePosition, myCanvas.worldCamera, out pos);
         if (Vector2.Distance(organic.transform.position, myCanvas.transform.TransformPoint(pos)) < 50f) // phân loại đúng
         {
-            // int idx = Int32.Parse(thisTrashItem.garbageData.ID);
-            // player.trashCountList[idx] = 0;
-            checkType(GarbageType.ORGANIC);
+            int idx = Int32.Parse(thisTrashItem.garbageData.ID);
+            player.currentTrash -= player.trashCountList[idx];
+            if (thisTrashItem.garbageData.Type == GarbageType.ORGANIC)
+            {
+                Player.Instance.coinInStage += thisTrashItem.garbageData.Price * player.trashCountList[idx];
+            }
+            else 
+            {
+                Debug.Log("khong cong");
+            }
+            player.trashCountList[idx] = 0;
         }
         else if (Vector2.Distance(inorganic.transform.position, myCanvas.transform.TransformPoint(pos)) < 50f) // phân loại sai
         {
-            // int idx = Int32.Parse(thisTrashItem.garbageData.ID);
-            // player.trashCountList[idx] = 0;
-            checkType(GarbageType.INORGANIC);
+            int idx = Int32.Parse(thisTrashItem.garbageData.ID);
+            player.currentTrash -= player.trashCountList[idx];
+            if (thisTrashItem.garbageData.Type == GarbageType.INORGANIC)
+            {
+                Player.Instance.coinInStage += thisTrashItem.garbageData.Price * player.trashCountList[idx];
+            }
+            else 
+            {
+                Debug.Log("khong cong");
+            }
+            player.trashCountList[idx] = 0;
         }
         if (m_DraggingIcon != null)
             Destroy(m_DraggingIcon);
@@ -104,17 +120,5 @@ public class DragTrash : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
             t = t.parent;
         }
         return comp;
-    }
-
-    void checkType(GarbageType type)
-    {
-        if (thisTrashItem.garbageData.Type == type)
-        {
-            Debug.Log("cong");
-        }
-        else 
-        {
-            Debug.Log("khong cong");
-        }
     }
 }

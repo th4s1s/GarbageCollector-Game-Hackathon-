@@ -11,14 +11,16 @@ public class Player : MonoBehaviour
         vending,
     }
 
+    public int coinInStage;
     [SerializeField] float speed;
     [SerializeField] Animator anim;
 
     float xdir, ydir;
     [SerializeField] bool isWalking;
     public bool isPlantTree;
+    public int currentTrash, capacityTrash;
 
-    public List<int> trashCountList = new List<int>();
+    public List<int> trashCountList = new List<int>() {0,0,0,0,0,0,0};
 
     public Weaption weaption;
     public float collectRadius, checkTreeRadius;
@@ -35,6 +37,7 @@ public class Player : MonoBehaviour
     {
         isPlantTree = false;
         isWalking = false;
+        capacityTrash = 10;
     }
     private void Update()
     {
@@ -89,8 +92,16 @@ public class Player : MonoBehaviour
             obj.transform.position = Vector2.MoveTowards(obj.transform.position, transform.position, 5 * Time.fixedDeltaTime);
             yield return new WaitForFixedUpdate();
         }
-        if (obj.GetComponent<Garbage>().id == "Banana") trashCountList[0]++;
-        if (obj.GetComponent<Garbage>().id == "Paper") trashCountList[1]++;
+        int idx = 0;
+        if (obj.GetComponent<Garbage>().id == "0") idx = 0;
+        if (obj.GetComponent<Garbage>().id == "1") idx = 1;
+        if (obj.GetComponent<Garbage>().id == "2") idx = 2;
+        if (obj.GetComponent<Garbage>().id == "3") idx = 3;
+        if (obj.GetComponent<Garbage>().id == "4") idx = 4;
+        if (obj.GetComponent<Garbage>().id == "5") idx = 5;
+        if (obj.GetComponent<Garbage>().id == "6") idx = 6;
+        trashCountList[idx]++;
+        currentTrash++;
         GarbageSpawner.Instance.ChangePollutionMeter(-obj.GetComponent<Garbage>().pollutionAmount);
         Destroy(obj);
         yield return new WaitForFixedUpdate();
@@ -99,11 +110,14 @@ public class Player : MonoBehaviour
 
     void CheckTrash()
     {
-        Debug.Log("CheckTrash");
+        // Debug.Log("CheckTrash");
         Collider2D coll = Physics2D.OverlapCircle(transform.position, collectRadius, trashLayer);
         if (coll != null)
         {
-            StartCoroutine(ICollect(coll.gameObject));
+            if (currentTrash < capacityTrash)
+                StartCoroutine(ICollect(coll.gameObject));
+            else 
+                Debug.Log("FULL");
         }
     }
 
