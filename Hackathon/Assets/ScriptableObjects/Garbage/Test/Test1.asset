@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94ab938cb176cc54a996f437f4a3552d, type: 3}
   m_Name: Test1
   m_EditorClassIdentifier: 
-  ID: 
-  Icon: {fileID: 0}
+  ID: 1
+  Icon: {fileID: 21300000, guid: 02800fb9cff14da47a04572790384d8b, type: 3}
   Price: 0
   Type: 0
-  PollutionAmount: 0
+  PollutionAmount: 1

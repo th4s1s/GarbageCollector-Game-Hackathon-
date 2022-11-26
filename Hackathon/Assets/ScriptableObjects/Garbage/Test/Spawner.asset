@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17ceaf8ebbbc6c049bda046852ac9edc, type: 3}
   m_Name: Spawner
   m_EditorClassIdentifier: 
-  Garbages: []
+  Garbages:
+  - {fileID: 11400000, guid: 80e000d93aa6ff94bace2773f7aa34bd, type: 2}
+  - {fileID: 11400000, guid: 4adcf646ebb0fdb489f7f44eef699747, type: 2}
