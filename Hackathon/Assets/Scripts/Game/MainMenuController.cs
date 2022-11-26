@@ -15,9 +15,6 @@ public class MainMenuController : MonoBehaviour
     public AudioClip buttonClip;
     AudioSource music;
 
-    public int maxOxi, oxi;
-    public int oxiReduceSpeed;
-
     //public ParticleSystem clickEffect;
 
     private void Awake()
