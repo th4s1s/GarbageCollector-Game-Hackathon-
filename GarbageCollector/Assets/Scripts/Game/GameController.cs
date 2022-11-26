@@ -47,8 +47,8 @@ public class GameController : MonoBehaviour
 
     private void Update()
     {
-        if (slider.value <= 0) Lose();
-        if (slider.value >= slider.maxValue) Win();
+        if (oxy <= 0) Lose();
+        if (oxy >= maxOxy) Win();
 
         if (Input.GetMouseButtonDown(0)) music.Play();
 
