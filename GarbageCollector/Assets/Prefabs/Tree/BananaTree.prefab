@@ -179,7 +179,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7338523627170285056
 Transform:
   m_ObjectHideFlags: 0
@@ -485,6 +485,7 @@ GameObject:
   - component: {fileID: 7338523627763399727}
   - component: {fileID: 7338523627763399726}
   - component: {fileID: 8745250203996047037}
+  - component: {fileID: 4816259482964885413}
   m_Layer: 0
   m_Name: BananaTree
   m_TagString: Untagged
@@ -544,6 +545,23 @@ MonoBehaviour:
   timeToGrow: 5
   powerScale: 1.25
   isMature: 0
+  isDead: 0
+--- !u!70 &4816259482964885413
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7338523627763399724}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.0031441753, y: 0.00096245087}
+  m_Size: {x: 0.59757215, y: 0.30640113}
+  m_Direction: 1
 --- !u!1 &7338523627857366937
 GameObject:
   m_ObjectHideFlags: 0

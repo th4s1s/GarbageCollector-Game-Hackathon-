@@ -93,6 +93,7 @@ GameObject:
   - component: {fileID: 8474587672824778797}
   - component: {fileID: 8474587672824778796}
   - component: {fileID: 8474587672824778798}
+  - component: {fileID: 2634567492188452837}
   m_Layer: 0
   m_Name: OakTree
   m_TagString: Untagged
@@ -153,6 +154,22 @@ MonoBehaviour:
   powerScale: 1.25
   isMature: 0
   isDead: 0
+--- !u!70 &2634567492188452837
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8474587672824778795}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -9.672672e-10, y: -0.008114026}
+  m_Size: {x: 1.0000004, y: 0.47631088}
+  m_Direction: 1
 --- !u!1 &8474587672853132520
 GameObject:
   m_ObjectHideFlags: 0

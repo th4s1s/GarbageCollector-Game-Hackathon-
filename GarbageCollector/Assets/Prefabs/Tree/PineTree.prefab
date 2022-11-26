@@ -485,6 +485,7 @@ GameObject:
   - component: {fileID: 2759236209934340135}
   - component: {fileID: 2759236209934340132}
   - component: {fileID: 2759236209934340134}
+  - component: {fileID: 7612096014879214742}
   m_Layer: 0
   m_Name: PineTree
   m_TagString: Untagged
@@ -544,6 +545,23 @@ MonoBehaviour:
   timeToGrow: 5
   powerScale: 1.25
   isMature: 0
+  isDead: 0
+--- !u!70 &7612096014879214742
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2759236209934340133}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.007132233, y: -8.5022833e-10}
+  m_Size: {x: 0.80305636, y: 0.4000028}
+  m_Direction: 1
 --- !u!1 &2759236210008778892
 GameObject:
   m_ObjectHideFlags: 0

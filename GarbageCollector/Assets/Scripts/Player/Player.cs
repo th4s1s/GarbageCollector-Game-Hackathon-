@@ -45,19 +45,6 @@ public class Player : MonoBehaviour
     {
         if (isCanMove)
         {
-<<<<<<< HEAD
-            isNear = IsTreeNear();
-            // if (Input.GetKeyDown(KeyCode.Z) && IsTreeNear()==false) PlantTree();
-        }
-
-        if (isWalking)
-        {
-            anim.Play("Walk");
-        }
-        else
-        {
-            anim.Play("Idle");
-=======
             xdir = Input.GetAxisRaw("Horizontal");
             ydir = Input.GetAxisRaw("Vertical");
 
@@ -71,16 +58,10 @@ public class Player : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Space)) CheckTrash();
 
-            // if (Input.GetKeyDown(KeyCode.X) && isPlantTree == false)
-            // {
-            //     isPlantTree = true;
-            //     PreparePlant();
-            // }
 
             if (isPlantTree)
             {
-                Debug.Log(IsTreeNear());
-                if (Input.GetKeyDown(KeyCode.Z) && IsTreeNear() == false) PlantTree();
+                isNear = IsTreeNear();
             }
 
             if (Input.GetKeyDown(KeyCode.L)) GameController.Instance.Lose();
@@ -93,7 +74,6 @@ public class Player : MonoBehaviour
             {
                 anim.Play("Idle");
             }
->>>>>>> 444dfdc132dfec6b8942659ca46381a742baf849
         }
     }
 
