@@ -92,7 +92,7 @@ public class Player : MonoBehaviour
     {
         while (obj.transform.position != transform.position)
         {
-            obj.transform.position = Vector2.MoveTowards(obj.transform.position, transform.position, 5 * Time.fixedDeltaTime);
+            obj.transform.position = Vector2.MoveTowards(obj.transform.position, transform.position, 10 * Time.fixedDeltaTime);
             yield return new WaitForFixedUpdate();
         }
         if (obj.GetComponent<Garbage>().id == "Banana") trashCountList[0]++;
