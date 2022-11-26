@@ -22,6 +22,8 @@ public class GameController : MonoBehaviour
     [SerializeField] Slider slider;
     [SerializeField] Gradient gradient;
     [SerializeField] Image fill;
+
+    [SerializeField] AudioSource music;
     private void Awake()
     {
         Instance = this;
@@ -47,6 +49,8 @@ public class GameController : MonoBehaviour
     {
         if (slider.value <= 0) Lose();
         if (slider.value >= slider.maxValue) Win();
+
+        if (Input.GetMouseButtonDown(0)) music.Play();
 
         //if (Input.GetKeyDown(KeyCode.M)) Win();
     }

@@ -10,8 +10,11 @@ public class Tutorial : MonoBehaviour
     [SerializeField] GameObject machineObj;
     [SerializeField] GameObject blackScene;
 
+    AudioSource music;
+
     private void Start()
     {
+        music = gameObject.GetComponent<AudioSource>();
         blackScene.SetActive(true);
     }
     // Update is called once per frame
@@ -19,6 +22,7 @@ public class Tutorial : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            music.Play();
             NextTutorial();
         }
     }
