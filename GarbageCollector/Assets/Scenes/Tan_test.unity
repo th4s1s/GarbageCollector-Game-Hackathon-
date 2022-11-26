@@ -8392,7 +8392,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93e12c9e713fc804598c57dff4e1e01b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinInStage: 1000
+  coinInStage: 0
   speed: 2
   anim: {fileID: 1586957031}
   isWalking: 0
