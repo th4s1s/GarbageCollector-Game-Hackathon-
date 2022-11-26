@@ -21,13 +21,13 @@ public class MainMenuController : MonoBehaviour
     {
         Instance = this;
         music = gameObject.GetComponent<AudioSource>();
-        //blackSceneAnim = blackScene.GetComponent<Animator>();
+        blackSceneAnim = blackScene.GetComponent<Animator>();
         startBtnAnim = startBtn.GetComponent<Animator>();
         exitBtnAnim = exitBtn.GetComponent<Animator>();
     }
     void Start()
     {
-        //blackSceneAnim.Play("BlackSceneBegin");
+        blackSceneAnim.Play("BlackSceneBegin");
         Time.timeScale = 1;
         defaultStartBtnSprite = startBtn.image.sprite;
         defaultExitBtnSprite = exitBtn.image.sprite;
@@ -76,13 +76,14 @@ public class MainMenuController : MonoBehaviour
     }    
     public void StartBtn()
     {
-        //blackSceneAnim.Play("BlackSceneEnd");
+        blackSceneAnim.Play("BlackSceneEnd");
         Invoke("LoadGameScene", 1);
         //SceneManager.LoadScene(1);
     }
 
     void LoadGameScene()
     {
-        SceneManager.LoadScene(1);
+        Debug.Log("LoadScene");
+        //SceneManager.LoadScene(1);
     }
 }
