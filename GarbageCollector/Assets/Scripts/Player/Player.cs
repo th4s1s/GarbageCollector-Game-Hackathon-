@@ -5,11 +5,6 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public static Player Instance { get; private set; }
-    public enum Weaption
-    {
-        none,
-        vending,
-    }
 
     [SerializeField] float speed;
     [SerializeField] Animator anim;
@@ -20,7 +15,6 @@ public class Player : MonoBehaviour
 
     public List<int> trashCountList = new List<int>();
 
-    public Weaption weaption;
     public float collectRadius, checkTreeRadius;
 
     [SerializeField] LayerMask trashLayer, treeLayer;
