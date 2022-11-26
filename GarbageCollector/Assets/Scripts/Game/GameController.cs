@@ -10,6 +10,8 @@ public class GameController : MonoBehaviour
     [SerializeField] int maxOxy;
     int oxy;
     float timeReduceOxy=0;
+
+    [SerializeField] GameObject gameOverPanel;
     public int Oxy
     {
         get { return oxy; }
@@ -44,9 +46,10 @@ public class GameController : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
-    public void Restart(bool isGoal)
+    public void Restart()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Debug.Log("Restart Level");
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void Win()
@@ -56,6 +59,9 @@ public class GameController : MonoBehaviour
 
     public void Lose()
     {
+        Player.Instance.Die();
+        gameOverPanel.SetActive(true);
+        Invoke("Restart", 5);
         //Todo
     }
 

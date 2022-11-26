@@ -17,7 +17,7 @@ public class Garbage : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(gameObject.transform.localScale.x < 1) gameObject.transform.localScale += new Vector3(0.02f, 0.02f, 0.02f);
+        if(gameObject.transform.localScale.x < 1) gameObject.transform.localScale += new Vector3(0.04f, 0.04f, 0.04f);
     }
 
     public void Setup(string _id, Sprite _icon, int _price, GarbageType _type, int _pollutionAmount)
