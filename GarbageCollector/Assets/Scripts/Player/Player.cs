@@ -24,8 +24,10 @@ public class Player : MonoBehaviour
     [SerializeField] SpriteRenderer plantTreeRangeSp;
     [SerializeField] GameObject collectRangeObj;
 
-    [SerializeField] List<GameObject> treeList = new List<GameObject>();
-    int treeID;
+    [SerializeField] List<GameObject> treeList = new List<GameObject>() {null, null, null};
+    public List<int> treeCountList = new List<int>() {0, 0, 0};
+    public int treeID;
+    public bool isNear;
 
     private void Awake()
     {
@@ -43,6 +45,19 @@ public class Player : MonoBehaviour
     {
         if (isCanMove)
         {
+<<<<<<< HEAD
+            isNear = IsTreeNear();
+            // if (Input.GetKeyDown(KeyCode.Z) && IsTreeNear()==false) PlantTree();
+        }
+
+        if (isWalking)
+        {
+            anim.Play("Walk");
+        }
+        else
+        {
+            anim.Play("Idle");
+=======
             xdir = Input.GetAxisRaw("Horizontal");
             ydir = Input.GetAxisRaw("Vertical");
 
@@ -78,6 +93,7 @@ public class Player : MonoBehaviour
             {
                 anim.Play("Idle");
             }
+>>>>>>> 444dfdc132dfec6b8942659ca46381a742baf849
         }
     }
 
@@ -126,15 +142,18 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void PlantTree()
+    public void PlantTree(int i)
     {
         plantTreeRangeSp.gameObject.SetActive(false);
         isPlantTree = false;
-        Debug.Log("Plant");
-        for(int i =0; i<treeList.Count; i++)
-        {
-            if (i == treeID) Instantiate(treeList[i], transform.position, Quaternion.identity);
-        }
+        // for(int i =0; i<treeList.Count; i++)
+        // {
+            if (treeCountList[i]>0) 
+            {
+                Instantiate(treeList[i], transform.position, Quaternion.identity);
+                treeCountList[i]--;
+            }
+        // }
         //Instantiate(tree, transform.position, Quaternion.identity);
     }
 
@@ -142,10 +161,10 @@ public class Player : MonoBehaviour
     {
         this.treeID = treeID;
         plantTreeRangeSp.gameObject.SetActive(true);
-        Debug.Log("Press Z to plant!");
+        // Debug.Log("Press Z to plant!");
     }
 
-    bool IsTreeNear()
+    public bool IsTreeNear()
     {
         Collider2D coll = Physics2D.OverlapCircle(transform.position, checkTreeRadius, treeLayer);
         if (coll != null)

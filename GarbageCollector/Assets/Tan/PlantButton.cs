@@ -4,13 +4,27 @@ using UnityEngine;
 
 public class PlantButton : MonoBehaviour
 {
+    public GameObject plantList;
+    bool isOpenThePlantList;
+    void Start()
+    {
+        plantList.SetActive(false);
+        isOpenThePlantList = false;
+    }
     public void PlayerGoPlant()
     {
-        // gọi instance của player để xuất hiện cái vùng xanh/đỏ
-        if (Player.Instance.isPlantTree == false)
+        if (isOpenThePlantList == false)
         {
-            Player.Instance.isPlantTree = true;
-            Player.Instance.PreparePlant(1);
+            if (Player.Instance.isPlantTree == false)
+            {
+                Player.Instance.isPlantTree = true;
+                Player.Instance.PreparePlant(0);
+                plantList.SetActive(true);
+            }
+        }
+        else 
+        {
+            plantList.SetActive(false);
         }
     }
 }
