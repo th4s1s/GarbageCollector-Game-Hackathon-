@@ -36,7 +36,7 @@ public class ShopButton : MonoBehaviour
         // Player.Instance.
         if (Player.Instance.coinInStage >= 50)
         {
-            Player.Instance.SetCollectRange(10f);
+            Player.Instance.SetCollectRange(1f);
             Player.Instance.coinInStage -= 50;
         }
     }
