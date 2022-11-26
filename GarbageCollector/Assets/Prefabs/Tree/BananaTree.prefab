@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5998312560360378382}
   - component: {fileID: 1631043241586517612}
   - component: {fileID: 7333041247010002367}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Smoke (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

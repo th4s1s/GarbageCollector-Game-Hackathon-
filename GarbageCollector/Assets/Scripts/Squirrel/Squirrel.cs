@@ -13,6 +13,7 @@ public class Squirrel : MonoBehaviour
     Transform player;
     private bool isRoam;
     private bool yeet;
+    private bool treeDes;
     [SerializeField] Animator anim;
     SpriteRenderer sprite;
 
@@ -24,6 +25,7 @@ public class Squirrel : MonoBehaviour
         treeToDestroy = null;
         isRoam = true;
         yeet = false;
+        treeDes = false;
         speed = 6f;
         target = new Vector2(Random.Range(roamingZoneX.x, roamingZoneX.y), Random.Range(roamingZoneY.x, roamingZoneY.y));
     }
@@ -65,21 +67,22 @@ public class Squirrel : MonoBehaviour
                 Vector2 pos = target - (Vector2) transform.position;
                 if (pos.x < 0) transform.localScale = new Vector3(-1, 1, 1);
                 else transform.localScale = new Vector3(1, 1, 1);
-                float step = speed * Time.deltaTime;
-                transform.position = Vector2.MoveTowards(transform.position, target, step);
+                transform.Translate(pos.normalized * speed * Time.deltaTime);
             }
         }
         else
         {
+            treeDes = false;
             RunToTree();
         }
     }
 
     void RunToTree()
     {
-        if(Vector2.Distance((Vector2)transform.position, target) < 0.025f)
+        if(Vector2.Distance((Vector2)transform.position, target) < 0.025f && !treeDes)
         {
             anim.SetBool("run", false);
+            treeDes = true;
             StartCoroutine(DestroyTree(treeToDestroy));
         }
         else
@@ -95,24 +98,29 @@ public class Squirrel : MonoBehaviour
     IEnumerator DestroyTree(GameObject obj)
     {
         yield return new WaitForSeconds(5);
-        if(obj.GetComponent<Plant>() != null) obj.GetComponent<Plant>().isDead = true;
+        if(obj != null) obj.GetComponent<Plant>().isDead = true;
+        treeDes = true;
         anim.SetBool("run", true);
-        Decide();
+        Debug.Log("A");
+        isRoam = true;
+        target = new Vector2(Random.Range(roamingZoneX.x, roamingZoneX.y), Random.Range(roamingZoneY.x, roamingZoneY.y));
+        StopAllCoroutines();
     }
 
     void Decide()
     {
         GameObject[] trees = GameObject.FindGameObjectsWithTag("Tree");
-        if (trees.Length == 0)
-        {
-            isRoam = true;
-            target = new Vector2(Random.Range(roamingZoneX.x, roamingZoneX.y), Random.Range(roamingZoneY.x, roamingZoneY.y));
-        }
-        else
-        {
+        //if (trees.Length == 0)
+        //{
+        //    isRoam = true;
+        //    target = new Vector2(Random.Range(roamingZoneX.x, roamingZoneX.y), Random.Range(roamingZoneY.x, roamingZoneY.y));
+        //    return;
+        //}
+        //else
+        //{
             foreach(GameObject obj in trees)
             {
-                if(obj.GetComponent<Plant>()?.isMature == true)
+                if(obj.GetComponent<Plant>()?.isMature == true && obj.GetComponent<Plant>()?.isDead == false)
                 {
                     isRoam = false;
                     treeToDestroy = obj;
@@ -120,7 +128,7 @@ public class Squirrel : MonoBehaviour
                     return;
                 }
             }
-        }
+        //}
         isRoam = true;
         target = new Vector2(Random.Range(roamingZoneX.x, roamingZoneX.y), Random.Range(roamingZoneY.x, roamingZoneY.y));
     }
