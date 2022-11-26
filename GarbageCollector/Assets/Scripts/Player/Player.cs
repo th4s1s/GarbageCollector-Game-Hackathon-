@@ -24,8 +24,8 @@ public class Player : MonoBehaviour
     [SerializeField] SpriteRenderer plantTreeRangeSp;
     [SerializeField] GameObject collectRangeObj;
 
-    [SerializeField] List<GameObject> treeList = new List<GameObject>() {null, null, null, null};
-    public List<int> treeCountList = new List<int>() {0, 0, 0, 0};
+    [SerializeField] List<GameObject> treeList = new List<GameObject>() {null, null, null};
+    public List<int> treeCountList = new List<int>() {0, 0, 0};
     public int treeID;
     public bool isNear;
 
@@ -57,6 +57,7 @@ public class Player : MonoBehaviour
             if (xdir < 0) transform.localScale = new Vector3(-1, 1, 1);
 
             if (Input.GetKeyDown(KeyCode.Space)) CheckTrash();
+
 
             if (isPlantTree)
             {
@@ -125,12 +126,15 @@ public class Player : MonoBehaviour
     {
         plantTreeRangeSp.gameObject.SetActive(false);
         isPlantTree = false;
-        if (i == -1) return; // cái này để phụ gọi hàm trong cái khác, đừng quan tâm
-        if (treeCountList[i]>0) 
-        {
-            Instantiate(treeList[i], transform.position, Quaternion.identity);
-            treeCountList[i]--;
-        }
+        // for(int i =0; i<treeList.Count; i++)
+        // {
+            if (treeCountList[i]>0) 
+            {
+                Instantiate(treeList[i], transform.position, Quaternion.identity);
+                treeCountList[i]--;
+            }
+        // }
+        //Instantiate(tree, transform.position, Quaternion.identity);
     }
 
     public void PreparePlant(int treeID)

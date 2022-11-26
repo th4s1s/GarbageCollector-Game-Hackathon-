@@ -6,6 +6,7 @@ public class Plant : MonoBehaviour
     [SerializeField] int oxy;
     [SerializeField] float timeToGrow;
     [SerializeField] float powerScale;
+    Collider2D col;
     public bool isMature = false;
     public bool isDead = false;
     float timePlant;
@@ -19,7 +20,8 @@ public class Plant : MonoBehaviour
         plant = gameObject;
         anim = plant.GetComponent<Animator>();
         size = plant.GetComponent<Transform>();
-
+        col = plant.GetComponent<Collider2D>();
+        col.isTrigger = true;
         anim.Play("Stage_1");
         timePlant = Time.time;
     }
@@ -36,7 +38,7 @@ public class Plant : MonoBehaviour
                     float timeVar = Time.time - timePlant - timeToGrow / 2;
                     float scaleFunction = (-100 * powerScale + 100) * timeVar * timeVar + (20 * powerScale - 20) * timeVar + 1;
                     if (timeVar <= 0.2f) size.localScale = new Vector3(scaleFunction, scaleFunction, 1);
-                    if (timeVar >= 0.1f) anim.Play("Stage_2");
+                    if (timeVar >= 0.1f) { anim.Play("Stage_2"); col.isTrigger = false; }
                 }
                 if (Time.time - timePlant >= timeToGrow)
                 {
@@ -61,5 +63,5 @@ public class Plant : MonoBehaviour
             anim.Play("Dead");
         }
     }
-    
+    void Dead() => Destroy(gameObject);
 }

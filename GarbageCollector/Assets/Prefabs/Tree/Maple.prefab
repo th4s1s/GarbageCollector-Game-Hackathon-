@@ -849,6 +849,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6423610183362862000}
   - component: {fileID: 1174596570062646491}
+  - component: {fileID: 1643871118389564328}
+  - component: {fileID: 2358658964929638615}
   m_Layer: 0
   m_Name: Maple
   m_TagString: Untagged
@@ -892,6 +894,39 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!70 &1643871118389564328
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7979679102356273954}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.00000035837846, y: 0.00629598}
+  m_Size: {x: 0.7061724, y: 0.4081475}
+  m_Direction: 1
+--- !u!114 &2358658964929638615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7979679102356273954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e43fa5c50d1d47a498aa3fe6c2d4814d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  oxy: 20
+  timeToGrow: 5
+  powerScale: 1.25
+  isMature: 0
+  isDead: 0
 --- !u!1 &8148986124613474098
 GameObject:
   m_ObjectHideFlags: 0
