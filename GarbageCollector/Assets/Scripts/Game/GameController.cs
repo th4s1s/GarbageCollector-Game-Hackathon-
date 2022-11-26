@@ -8,7 +8,7 @@ public class GameController : MonoBehaviour
 {
     public static GameController Instance { get; private set; }
     [SerializeField] int maxOxy;
-    int oxy;
+    [SerializeField] int oxy;
     float timeReduceOxy=0;
 
     [SerializeField] GameObject gameOverPanel;
@@ -29,7 +29,6 @@ public class GameController : MonoBehaviour
     private void Start()
     {
         blackScene.SetActive(true);
-        oxy = maxOxy / 2;
         slider.value = (float)oxy / maxOxy;
     }
     private void FixedUpdate()
