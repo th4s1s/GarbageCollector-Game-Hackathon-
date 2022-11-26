@@ -24,8 +24,8 @@ public class Player : MonoBehaviour
     [SerializeField] SpriteRenderer plantTreeRangeSp;
     [SerializeField] GameObject collectRangeObj;
 
-    [SerializeField] List<GameObject> treeList = new List<GameObject>() {null, null, null};
-    public List<int> treeCountList = new List<int>() {0, 0, 0};
+    [SerializeField] List<GameObject> treeList = new List<GameObject>() {null, null, null, null};
+    public List<int> treeCountList = new List<int>() {0, 0, 0, 0};
     public int treeID;
     public bool isNear;
 
@@ -45,19 +45,6 @@ public class Player : MonoBehaviour
     {
         if (isCanMove)
         {
-<<<<<<< HEAD
-            isNear = IsTreeNear();
-            // if (Input.GetKeyDown(KeyCode.Z) && IsTreeNear()==false) PlantTree();
-        }
-
-        if (isWalking)
-        {
-            anim.Play("Walk");
-        }
-        else
-        {
-            anim.Play("Idle");
-=======
             xdir = Input.GetAxisRaw("Horizontal");
             ydir = Input.GetAxisRaw("Vertical");
 
@@ -71,16 +58,9 @@ public class Player : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Space)) CheckTrash();
 
-            // if (Input.GetKeyDown(KeyCode.X) && isPlantTree == false)
-            // {
-            //     isPlantTree = true;
-            //     PreparePlant();
-            // }
-
             if (isPlantTree)
             {
-                Debug.Log(IsTreeNear());
-                if (Input.GetKeyDown(KeyCode.Z) && IsTreeNear() == false) PlantTree();
+                isNear = IsTreeNear();
             }
 
             if (Input.GetKeyDown(KeyCode.L)) GameController.Instance.Lose();
@@ -93,7 +73,6 @@ public class Player : MonoBehaviour
             {
                 anim.Play("Idle");
             }
->>>>>>> 444dfdc132dfec6b8942659ca46381a742baf849
         }
     }
 
@@ -146,15 +125,12 @@ public class Player : MonoBehaviour
     {
         plantTreeRangeSp.gameObject.SetActive(false);
         isPlantTree = false;
-        // for(int i =0; i<treeList.Count; i++)
-        // {
-            if (treeCountList[i]>0) 
-            {
-                Instantiate(treeList[i], transform.position, Quaternion.identity);
-                treeCountList[i]--;
-            }
-        // }
-        //Instantiate(tree, transform.position, Quaternion.identity);
+        if (i == -1) return; // cái này để phụ gọi hàm trong cái khác, đừng quan tâm
+        if (treeCountList[i]>0) 
+        {
+            Instantiate(treeList[i], transform.position, Quaternion.identity);
+            treeCountList[i]--;
+        }
     }
 
     public void PreparePlant(int treeID)

@@ -15,6 +15,7 @@ public class PlantButton : MonoBehaviour
     {
         if (isOpenThePlantList == false)
         {
+            isOpenThePlantList = true;
             if (Player.Instance.isPlantTree == false)
             {
                 Player.Instance.isPlantTree = true;
@@ -24,7 +25,10 @@ public class PlantButton : MonoBehaviour
         }
         else 
         {
+            isOpenThePlantList = false;
             plantList.SetActive(false);
+            Player.Instance.isPlantTree = false;
+            Player.Instance.PlantTree(-1);
         }
     }
 }
