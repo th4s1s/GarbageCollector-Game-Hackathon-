@@ -14,13 +14,10 @@ public class TrashInventory : MonoBehaviour
     {
         Instance = this;
     }
-    void FixedUpdate()
+    public void UpdateTrashCount(int i)
     {
-        int trashCountListSize = Player.Instance.trashCountList.Count;
-        for (int i=0; i<trashCountListSize; i++)
-        {
-            trashList[i].amountTrashText.text = Player.Instance.trashCountList[i].ToString();
-            currNum.text = Player.Instance.currentTrash.ToString();
-        }
+        trashList[i].amountTrashText.text = Player.Instance.trashCountList[i].ToString();
+        currNum.text = Player.Instance.currentTrash.ToString();
+        trashList[i].GetComponentInChildren<Animator>().Play("number");
     }
 }

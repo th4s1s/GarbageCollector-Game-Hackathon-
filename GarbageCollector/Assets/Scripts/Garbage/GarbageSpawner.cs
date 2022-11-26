@@ -46,6 +46,10 @@ public class GarbageSpawner : MonoBehaviour
         float val = pollutionMeter.value + ((float)amount / maxPollution * 1.0f);
         if (val < 0) val = 0;
         pollutionMeter.value = val;
+        if (pollutionMeter.value >= 1)
+        {
+            GameController.Instance.Lose();
+        }
     }
 
 }
