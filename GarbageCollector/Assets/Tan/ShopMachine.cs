@@ -41,6 +41,7 @@ public class ShopMachine : MonoBehaviour
             machinePanel.gameObject.SetActive(true);
             machineUISentence.gameObject.SetActive(false);
             Player.Instance.isCanMove = false;
+            Time.timeScale = 0;
         }
         if (Input.GetKeyDown(KeyCode.Escape) && isOpeningMachine == true)
         {
@@ -48,6 +49,7 @@ public class ShopMachine : MonoBehaviour
             machinePanel.gameObject.SetActive(false);
             machineUISentence.gameObject.SetActive(false);
             Player.Instance.isCanMove = true;
+            Time.timeScale = 1;
         }
     }
 }

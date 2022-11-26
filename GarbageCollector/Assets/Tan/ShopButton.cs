@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ShopButton : MonoBehaviour
 {
+    public Text capacityNum;
     public void BuyTree(int i)
     {
         int requireCoin = 0;
@@ -31,7 +33,7 @@ public class ShopButton : MonoBehaviour
         // Player.Instance.
         if (Player.Instance.coinInStage >= 50)
         {
-            // Player.Instance.capacityTrash += 10;
+            Player.Instance.SetCollectRange(10f);
             Player.Instance.coinInStage -= 50;
         }
     }
@@ -42,6 +44,7 @@ public class ShopButton : MonoBehaviour
         {
             Player.Instance.capacityTrash += 10;
             Player.Instance.coinInStage -= 50;
+            capacityNum.text = Player.Instance.capacityTrash.ToString();
         }
     }
 }

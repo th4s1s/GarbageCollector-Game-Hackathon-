@@ -61,6 +61,7 @@ public class Plant : MonoBehaviour
         if (isDead)
         {
             anim.Play("Dead");
+            Destroy(this);
         }
     }
     void Dead() => Destroy(gameObject);

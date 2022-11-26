@@ -6,7 +6,7 @@ public class Player : MonoBehaviour
 {
     public static Player Instance { get; private set; }
 
-    public int coinInStage;
+    public int coinInStage = 0;
     [SerializeField] float speed;
     [SerializeField] Animator anim;
 

@@ -41,6 +41,12 @@ public class GameController : MonoBehaviour
         slider.value = (float)oxy / maxOxy;
         fill.color = gradient.Evaluate(slider.value);
     }
+
+    private void Update()
+    {
+        if (slider.value <= 0) Lose();
+        if (slider.value >= slider.maxValue) Win();
+    }
     public void NextLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
