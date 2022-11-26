@@ -10,6 +10,16 @@ public class Garbage : MonoBehaviour
     public GarbageType type { get; private set; }
     public int pollutionAmount { get; private set; }
 
+    void Start()
+    {
+        gameObject.transform.localScale = Vector3.zero;
+    }
+
+    void FixedUpdate()
+    {
+        if(gameObject.transform.localScale.x < 1.5) gameObject.transform.localScale += new Vector3(0.02f, 0.02f, 0.02f);
+    }
+
     public void Setup(string _id, Sprite _icon, int _price, GarbageType _type, int _pollutionAmount)
     {
         this.id = _id;

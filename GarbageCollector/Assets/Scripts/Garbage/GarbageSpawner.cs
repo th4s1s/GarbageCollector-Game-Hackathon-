@@ -27,6 +27,7 @@ public class GarbageSpawner : MonoBehaviour
         int idx = Random.Range(0, spawnerData.Garbages.Count);
         GameObject garbageInstance = Instantiate(garbageTemplate.gameObject);
         garbageInstance.transform.position = new Vector2(Random.Range(spawnZoneX.x, spawnZoneX.y), Random.Range(spawnZoneY.x, spawnZoneY.y));
+        garbageInstance.transform.Rotate(new Vector3(0, 0, Random.Range(0, 360)));
         garbageInstance.GetComponent<Garbage>().Setup(spawnerData.Garbages[idx].ID, spawnerData.Garbages[idx].Icon, spawnerData.Garbages[idx].Price, spawnerData.Garbages[idx].Type, spawnerData.Garbages[idx].PollutionAmount);
         ChangePollutionMeter(spawnerData.Garbages[idx].PollutionAmount);
     }
