@@ -40,7 +40,7 @@ public class GarbageSpawner : MonoBehaviour
         }
     }
 
-    void ChangePollutionMeter(int amount)
+    public void ChangePollutionMeter(int amount)
     {
         float val = pollutionMeter.value + ((float)amount / maxPollution * 1.0f);
         if (val < 0) val = 0;

@@ -24,6 +24,7 @@ public class Player : MonoBehaviour
     [SerializeField] LayerMask trashLayer, treeLayer;
 
     [SerializeField] SpriteRenderer plantTreeRangeSp;
+    
 
     private void Start()
     {
@@ -84,6 +85,7 @@ public class Player : MonoBehaviour
         }
         if (obj.GetComponent<Garbage>().id == "Banana") trashCountList[0]++;
         if (obj.GetComponent<Garbage>().id == "Paper") trashCountList[1]++;
+        GarbageSpawner.Instance.ChangePollutionMeter(-obj.GetComponent<Garbage>().pollutionAmount);
         Destroy(obj);
         yield return new WaitForFixedUpdate();
     }
