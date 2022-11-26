@@ -35,19 +35,21 @@ public class ShopMachine : MonoBehaviour
             machineUISentence.gameObject.SetActive(true);
             canOpenMachine = true;
         }
-        if (Input.GetKeyDown(KeyCode.R) && isOpeningMachine == true)
+        if (Input.GetKeyDown(KeyCode.R) && isOpeningMachine == true) // đóng
         {
             isOpeningMachine = false;
+            // machinePanel.GetComponent<Animator>().Play("MachineClose");
             machinePanel.gameObject.SetActive(false);
             machineUISentence.gameObject.SetActive(false);
             Player.Instance.isCanMove = true;
             Time.timeScale = 1;
             return;
         }
-        if (Input.GetKeyDown(KeyCode.R) && canOpenMachine == true)
+        if (Input.GetKeyDown(KeyCode.R) && canOpenMachine == true) // mở
         {
             isOpeningMachine = true;
             machinePanel.gameObject.SetActive(true);
+            // machinePanel.GetComponent<Animator>().Play("MachineOpen");
             machineUISentence.gameObject.SetActive(false);
             Player.Instance.isCanMove = false;
             Time.timeScale = 0;

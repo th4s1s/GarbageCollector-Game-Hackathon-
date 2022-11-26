@@ -124,6 +124,10 @@ public class Player : MonoBehaviour
         {
             if (currentTrash < capacityTrash)
                 StartCoroutine(ICollect(coll.gameObject));
+            else if (currentTrash == capacityTrash)
+            {
+                TrashInventory.Instance.FullCapacityNotice();
+            }
             // else 
             //     Debug.Log("FULL");
         }
