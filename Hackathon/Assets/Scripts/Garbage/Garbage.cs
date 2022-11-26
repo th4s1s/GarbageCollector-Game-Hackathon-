@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Garbage : MonoBehaviour
 {
-    public string id { get; private set; }
+    public string id;
     public Sprite icon { get; private set; }
     public int price { get; private set; }
     public GarbageType type { get; private set; }
