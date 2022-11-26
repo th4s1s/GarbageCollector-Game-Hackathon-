@@ -51,7 +51,6 @@ public class Player : MonoBehaviour
             if (xdir != 0 || ydir != 0) isWalking = true;
             else isWalking = false;
             //anim.SetBool("isWalking", isWalking);
-            if (isWalking) Walking();
 
             if (xdir > 0) transform.localScale = new Vector3(1, 1, 1);
             if (xdir < 0) transform.localScale = new Vector3(-1, 1, 1);
@@ -75,6 +74,11 @@ public class Player : MonoBehaviour
                 anim.Play("Idle");
             }
         }
+    }
+
+    private void FixedUpdate()
+    {
+        if (isWalking) Walking();
     }
 
     void Walking()

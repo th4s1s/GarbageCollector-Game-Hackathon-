@@ -12,7 +12,7 @@ public class GameController : MonoBehaviour
     float timeReduceOxy=0;
 
     [SerializeField] GameObject gameOverPanel;
-    [SerializeField] GameObject flashRiseObj, grass2Tilemap;
+    [SerializeField] GameObject flashRiseObj, grass2Tilemap, blackScene;
     public int Oxy
     {
         get { return oxy; }
@@ -28,6 +28,7 @@ public class GameController : MonoBehaviour
     }
     private void Start()
     {
+        blackScene.SetActive(true);
         oxy = maxOxy / 2;
         slider.value = (float)oxy / maxOxy;
     }
@@ -72,17 +73,23 @@ public class GameController : MonoBehaviour
     public void SetActiveGrass2()
     {
         grass2Tilemap.SetActive(true);
-        Invoke("NextLevel",2);
+        Invoke("DoBlackSceneEnd", 2);
+        Invoke("NextLevel",3);
     }
 
     public void Lose()
     {
         Player.Instance.Die();
         gameOverPanel.SetActive(true);
-        Invoke("Restart", 5);
+        Invoke("DoBlackSceneEnd", 5);
+        Invoke("Restart", 6);
         //Todo
     }
 
+    void DoBlackSceneEnd()
+    {
+        blackScene.GetComponent<Animator>().Play("BlackSceneEnd");
+    }
     public void Exit()
     {
         //Todo
