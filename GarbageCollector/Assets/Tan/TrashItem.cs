@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class TrashItem : MonoBehaviour
 {
-    public Image spriteTrash;
     public bool isCollected;
     public Text amountTrashText;
     public GarbageData garbageData;
@@ -20,11 +19,11 @@ public class TrashItem : MonoBehaviour
     {
         if (isCollected == false)
         {
-            spriteTrash = null; // dau cham hoi
+            this.GetComponent<Image>().sprite = null; // dau cham hoi
         }
         else
         {
-            spriteTrash = null; // da co hinh anh
+            this.GetComponent<Image>().sprite = null; // da co hinh anh
         }
     }
 

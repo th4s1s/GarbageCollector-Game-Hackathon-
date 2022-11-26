@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94ab938cb176cc54a996f437f4a3552d, type: 3}
   m_Name: Apple
   m_EditorClassIdentifier: 
-  ID: 
-  Icon: {fileID: 21300000, guid: 1755f4a939f89534a83e367d71292ebf, type: 3}
-  Price: 2
+  ID: 0
+  Icon: {fileID: 0}
+  Price: 0
   Type: 0
-  PollutionAmount: 2
+  PollutionAmount: 0

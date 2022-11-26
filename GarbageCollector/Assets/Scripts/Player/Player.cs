@@ -5,26 +5,27 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public static Player Instance { get; private set; }
-    public enum Weaption
-    {
-        none,
-        vending,
-    }
 
+    public int coinInStage;
     [SerializeField] float speed;
     [SerializeField] Animator anim;
 
     float xdir, ydir;
-    [SerializeField] bool isWalking, isPlantTree;
+    [SerializeField] bool isWalking;
+    public bool isPlantTree, isCanMove;
+    public int currentTrash, capacityTrash;
 
-    public List<int> trashCountList = new List<int>();
+    public List<int> trashCountList = new List<int>() {0,0,0,0,0,0,0};
 
-    public Weaption weaption;
     public float collectRadius, checkTreeRadius;
 
     [SerializeField] LayerMask trashLayer, treeLayer;
 
     [SerializeField] SpriteRenderer plantTreeRangeSp;
+    [SerializeField] GameObject collectRangeObj;
+
+    [SerializeField] List<GameObject> treeList = new List<GameObject>();
+    int treeID;
 
     private void Awake()
     {
@@ -34,40 +35,49 @@ public class Player : MonoBehaviour
     {
         isPlantTree = false;
         isWalking = false;
+        isCanMove = true;
+        capacityTrash = 10;
+        collectRangeObj.transform.localScale = new Vector3(1, 1, 1) * collectRadius/1.7f;
     }
     private void Update()
     {
-        xdir = Input.GetAxisRaw("Horizontal");
-        ydir = Input.GetAxisRaw("Vertical");
-
-        if (xdir != 0 || ydir != 0) isWalking = true;
-        else isWalking = false;
-        //anim.SetBool("isWalking", isWalking);
-        if (isWalking) Walking();
-
-        if (xdir > 0) transform.localScale = new Vector3(1, 1, 1);
-        if (xdir < 0) transform.localScale = new Vector3(-1, 1, 1);
-
-        if (Input.GetKeyDown(KeyCode.Space)) CheckTrash();
-        if (Input.GetKeyDown(KeyCode.X) && isPlantTree == false)
+        if (isCanMove)
         {
-            isPlantTree = true;
-            PreparePlant();
-        }
+            xdir = Input.GetAxisRaw("Horizontal");
+            ydir = Input.GetAxisRaw("Vertical");
 
-        if (isPlantTree)
-        {
-            Debug.Log(IsTreeNear());
-            if (Input.GetKeyDown(KeyCode.Z) && IsTreeNear()==false) PlantTree();
-        }
+            if (xdir != 0 || ydir != 0) isWalking = true;
+            else isWalking = false;
+            //anim.SetBool("isWalking", isWalking);
+            if (isWalking) Walking();
 
-        if (isWalking)
-        {
-            anim.Play("Walk");
-        }
-        else
-        {
-            anim.Play("Idle");
+            if (xdir > 0) transform.localScale = new Vector3(1, 1, 1);
+            if (xdir < 0) transform.localScale = new Vector3(-1, 1, 1);
+
+            if (Input.GetKeyDown(KeyCode.Space)) CheckTrash();
+
+            // if (Input.GetKeyDown(KeyCode.X) && isPlantTree == false)
+            // {
+            //     isPlantTree = true;
+            //     PreparePlant();
+            // }
+
+            if (isPlantTree)
+            {
+                Debug.Log(IsTreeNear());
+                if (Input.GetKeyDown(KeyCode.Z) && IsTreeNear() == false) PlantTree();
+            }
+
+            if (Input.GetKeyDown(KeyCode.L)) GameController.Instance.Lose();
+
+            if (isWalking)
+            {
+                anim.Play("Walk");
+            }
+            else
+            {
+                anim.Play("Idle");
+            }
         }
     }
 
@@ -82,13 +92,21 @@ public class Player : MonoBehaviour
 
     IEnumerator ICollect(GameObject obj)
     {
-        while (obj.transform.position != transform.position)
+        while (Vector3.Magnitude(obj.transform.position - transform.position)>0.2f)
         {
-            obj.transform.position = Vector2.MoveTowards(obj.transform.position, transform.position, 5 * Time.fixedDeltaTime);
+            obj.transform.position = Vector2.MoveTowards(obj.transform.position, transform.position, 10 * Time.fixedDeltaTime);
             yield return new WaitForFixedUpdate();
         }
-        if (obj.GetComponent<Garbage>().id == "Banana") trashCountList[0]++;
-        if (obj.GetComponent<Garbage>().id == "Paper") trashCountList[1]++;
+        int idx = 0;
+        if (obj.GetComponent<Garbage>().id == "0") idx = 0;
+        if (obj.GetComponent<Garbage>().id == "1") idx = 1;
+        if (obj.GetComponent<Garbage>().id == "2") idx = 2;
+        if (obj.GetComponent<Garbage>().id == "3") idx = 3;
+        if (obj.GetComponent<Garbage>().id == "4") idx = 4;
+        if (obj.GetComponent<Garbage>().id == "5") idx = 5;
+        if (obj.GetComponent<Garbage>().id == "6") idx = 6;
+        trashCountList[idx]++;
+        currentTrash++;
         GarbageSpawner.Instance.ChangePollutionMeter(-obj.GetComponent<Garbage>().pollutionAmount);
         Destroy(obj);
         yield return new WaitForFixedUpdate();
@@ -97,11 +115,14 @@ public class Player : MonoBehaviour
 
     void CheckTrash()
     {
-        Debug.Log("CheckTrash");
+        // Debug.Log("CheckTrash");
         Collider2D coll = Physics2D.OverlapCircle(transform.position, collectRadius, trashLayer);
         if (coll != null)
         {
-            StartCoroutine(ICollect(coll.gameObject));
+            if (currentTrash < capacityTrash)
+                StartCoroutine(ICollect(coll.gameObject));
+            else 
+                Debug.Log("FULL");
         }
     }
 
@@ -110,11 +131,16 @@ public class Player : MonoBehaviour
         plantTreeRangeSp.gameObject.SetActive(false);
         isPlantTree = false;
         Debug.Log("Plant");
+        for(int i =0; i<treeList.Count; i++)
+        {
+            if (i == treeID) Instantiate(treeList[i], transform.position, Quaternion.identity);
+        }
         //Instantiate(tree, transform.position, Quaternion.identity);
     }
 
-    public void PreparePlant()
+    public void PreparePlant(int treeID)
     {
+        this.treeID = treeID;
         plantTreeRangeSp.gameObject.SetActive(true);
         Debug.Log("Press Z to plant!");
     }
@@ -134,8 +160,20 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void Die()
+    {
+        isCanMove = false;
+        anim.Play("Die");
+    }
+
+    public void SetCollectRange(float rangeAdd)
+    {
+        collectRadius += rangeAdd;
+        collectRangeObj.transform.localScale = new Vector3(1, 1, 1) * collectRadius / 1.7f;
+    }
+
     private void OnDrawGizmos()
     {
-        Gizmos.DrawSphere(transform.position, checkTreeRadius);
+        Gizmos.DrawSphere(transform.position, collectRadius);
     }
 }

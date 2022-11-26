@@ -13,5 +13,10 @@ MonoBehaviour:
   m_Name: Spawner
   m_EditorClassIdentifier: 
   Garbages:
+  - {fileID: 11400000, guid: 79a2f9c06452bbe488194e8b379b6d45, type: 2}
+  - {fileID: 11400000, guid: 7434610edda447b44bc5976cbf63ec4a, type: 2}
   - {fileID: 11400000, guid: 80e000d93aa6ff94bace2773f7aa34bd, type: 2}
+  - {fileID: 11400000, guid: 2e4d1cd1f57bfe348bb8299f140ce530, type: 2}
   - {fileID: 11400000, guid: 4adcf646ebb0fdb489f7f44eef699747, type: 2}
+  - {fileID: 11400000, guid: 86294a7b8eedb5c429fdf1112c83f597, type: 2}
+  - {fileID: 11400000, guid: 89f88088e7c13914fbd48a0cb2f1a4b0, type: 2}

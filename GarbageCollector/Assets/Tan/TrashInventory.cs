@@ -6,17 +6,20 @@ using UnityEngine.EventSystems;
 
 public class TrashInventory : MonoBehaviour
 {
+    public static TrashInventory Instance {get; private set;}  
     public List <TrashItem> trashList;
-    void Start()
+
+    void Awake()
     {
-        Player player = GameObject.FindObjectOfType<Player>();
-        // int trashCountListSize = this.trashCountList.Count;
-        // Debug.Log(trashCountListSize);
-        int trashCountListSize = 1;
+        Instance = this;
+    }
+    void FixedUpdate()
+    {
+        int trashCountListSize = Player.Instance.trashCountList.Count;
         for (int i=0; i<trashCountListSize; i++)
         {
-            // trashList[i].amountTrashText.text = player.trashCountList[i].ToString();
-            trashList[i].amountTrashText.text = "10";
+            // Debug.Log(Player.Instance.trashCountList[i].ToString());
+            trashList[i].amountTrashText.text = Player.Instance.trashCountList[i].ToString();
         }
     }
 }
