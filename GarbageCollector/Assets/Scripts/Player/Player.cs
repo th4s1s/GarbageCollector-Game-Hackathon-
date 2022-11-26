@@ -26,6 +26,7 @@ public class Player : MonoBehaviour
     [SerializeField] LayerMask trashLayer, treeLayer;
 
     [SerializeField] SpriteRenderer plantTreeRangeSp;
+    [SerializeField] GameObject collectRangeObj;
 
     private void Awake()
     {
@@ -35,9 +36,11 @@ public class Player : MonoBehaviour
     {
         isPlantTree = false;
         isWalking = false;
+        collectRangeObj.transform.localScale = new Vector3(1, 1, 1) * collectRadius/3;
     }
     private void Update()
     {
+        collectRangeObj.transform.localScale = new Vector3(1, 1, 1) * collectRadius / 1.7f;
         xdir = Input.GetAxisRaw("Horizontal");
         ydir = Input.GetAxisRaw("Vertical");
 
@@ -138,6 +141,6 @@ public class Player : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawSphere(transform.position, checkTreeRadius);
+        Gizmos.DrawSphere(transform.position, collectRadius);
     }
 }
