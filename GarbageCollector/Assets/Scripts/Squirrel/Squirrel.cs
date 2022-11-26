@@ -5,13 +5,15 @@ using UnityEngine;
 
 public class Squirrel : MonoBehaviour
 {
-    [SerializeField] Vector2 roamingZoneX;
-    [SerializeField] Vector2 roamingZoneY;
-    [SerializeField] float speed;
+    public Vector2 roamingZoneX;
+    public Vector2 roamingZoneY;
+    private float speed;
     private Vector2 target;
     GameObject treeToDestroy;
     Transform player;
     private bool isRoam;
+    private bool yeet;
+    [SerializeField] Animator anim;
 
     // Start is called before the first frame update
     void Start()
@@ -19,6 +21,8 @@ public class Squirrel : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
         treeToDestroy = null;
         isRoam = true;
+        yeet = false;
+        speed = 6f;
         target = new Vector2(Random.Range(roamingZoneX.x, roamingZoneX.y), Random.Range(roamingZoneY.x, roamingZoneY.y));
     }
 
@@ -26,10 +30,25 @@ public class Squirrel : MonoBehaviour
     void Update()
     {
         Vector2 dir = transform.position - player.position;
-        if (dir.magnitude < 2f)
+        if(yeet)
+        {
+            if (dir.magnitude > 15f)
+            {
+                SquirrelSpawner.Instance.Cast(transform.position);
+                Destroy(gameObject);
+            }
+            if (dir.x < 0) transform.localScale = new Vector3(-1, 1, 1);
+            else transform.localScale = new Vector3(1, 1, 1);
+            transform.Translate(dir.normalized * speed * Time.deltaTime);
+        }
+        else if (dir.magnitude < 2f)
         {
             StopAllCoroutines();
+            anim.SetBool("run", true);
             isRoam = true;
+            yeet = true;
+            if (dir.x < 0) transform.localScale = new Vector3(-1, 1, 1);
+            else transform.localScale = new Vector3(1, 1, 1);
             transform.Translate(dir.normalized * speed * Time.deltaTime);
             target = new Vector2(Random.Range(roamingZoneX.x, roamingZoneX.y), Random.Range(roamingZoneY.x, roamingZoneY.y));
         }
@@ -41,25 +60,31 @@ public class Squirrel : MonoBehaviour
             }
             else
             {
+                Vector2 pos = target - (Vector2) transform.position;
+                if (pos.x < 0) transform.localScale = new Vector3(-1, 1, 1);
+                else transform.localScale = new Vector3(1, 1, 1);
                 float step = speed * Time.deltaTime;
                 transform.position = Vector2.MoveTowards(transform.position, target, step);
             }
         }
         else
         {
-            Debug.Log("Tree");
             RunToTree();
         }
     }
 
     void RunToTree()
     {
-        if(Vector2.Distance((Vector2)transform.position, target) < 0.01f)
+        if(Vector2.Distance((Vector2)transform.position, target) < 0.025f)
         {
+            anim.SetBool("run", false);
             StartCoroutine(DestroyTree(treeToDestroy));
         }
         else
         {
+            Vector2 pos = target - (Vector2)transform.position;
+            if (pos.x < 0) transform.localScale = new Vector3(-1, 1, 1);
+            else transform.localScale = new Vector3(1, 1, 1);
             float step = speed * Time.deltaTime;
             transform.position = Vector2.MoveTowards(transform.position, target, step);
         }
@@ -69,6 +94,7 @@ public class Squirrel : MonoBehaviour
     {
         yield return new WaitForSeconds(5);
         Destroy(obj);
+        anim.SetBool("run", true);
         Decide();
     }
 
@@ -86,7 +112,6 @@ public class Squirrel : MonoBehaviour
             {
                 if(obj.GetComponent<Plant>()?.isMature == true)
                 {
-                    Debug.Log("found");
                     isRoam = false;
                     treeToDestroy = obj;
                     target = obj.transform.position;
