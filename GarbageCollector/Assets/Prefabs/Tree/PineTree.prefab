@@ -5501,7 +5501,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e43fa5c50d1d47a498aa3fe6c2d4814d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  oxy: 10
+  oxy: 7
   timeToGrow: 5
   powerScale: 1.25
   isMature: 0

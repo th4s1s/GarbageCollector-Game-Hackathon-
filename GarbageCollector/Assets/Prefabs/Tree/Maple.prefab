@@ -5883,7 +5883,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   oxy: 20
-  timeToGrow: 5
+  timeToGrow: 10
   powerScale: 1.25
   isMature: 0
   isDead: 0
