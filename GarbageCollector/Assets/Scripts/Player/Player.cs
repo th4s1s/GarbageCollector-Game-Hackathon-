@@ -15,7 +15,8 @@ public class Player : MonoBehaviour
     [SerializeField] Animator anim;
 
     float xdir, ydir;
-    [SerializeField] bool isWalking, isPlantTree;
+    [SerializeField] bool isWalking;
+    public bool isPlantTree;
 
     public List<int> trashCountList = new List<int>();
 
@@ -49,11 +50,12 @@ public class Player : MonoBehaviour
         if (xdir < 0) transform.localScale = new Vector3(-1, 1, 1);
 
         if (Input.GetKeyDown(KeyCode.Space)) CheckTrash();
-        if (Input.GetKeyDown(KeyCode.X) && isPlantTree == false)
-        {
-            isPlantTree = true;
-            PreparePlant();
-        }
+        
+        // if (Input.GetKeyDown(KeyCode.X) && isPlantTree == false)
+        // {
+        //     isPlantTree = true;
+        //     PreparePlant();
+        // }
 
         if (isPlantTree)
         {

@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class ShopMachine : MonoBehaviour
 {
-    private GameObject player;
     public Text machineUISentence;
     public Image machinePanel;
     private bool canOpenMachine = false;
@@ -18,10 +17,6 @@ public class ShopMachine : MonoBehaviour
         if (Instance != null && Instance != this) return;
     }
 
-    void Start()
-    {
-        player = GameObject.FindGameObjectWithTag("Player");
-    }
 
     void Update()
     {
@@ -30,7 +25,7 @@ public class ShopMachine : MonoBehaviour
 
     void CheckDistanceAndOpen()
     {
-        if (Vector2.Distance(player.transform.position, this.transform.position) >= 2f)
+        if (Vector2.Distance(Player.Instance.transform.position, this.transform.position) >= 2f)
         {
             machineUISentence.gameObject.SetActive(false);
             canOpenMachine = false;
