@@ -73,7 +73,8 @@ public class DragTrash : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     {
         Vector2 pos;
         RectTransformUtility.ScreenPointToLocalPointInRectangle(myCanvas.transform as RectTransform, Input.mousePosition, myCanvas.worldCamera, out pos);
-        if (Vector2.Distance(organic.transform.position, myCanvas.transform.TransformPoint(pos)) < 50f) // phân loại đúng
+        // Debug.Log(Vector2.Distance(organic.transform.position, myCanvas.transform.TransformPoint(pos)));
+        if (Vector2.Distance(organic.transform.position, myCanvas.transform.TransformPoint(pos)) < 1f)
         {
             int idx = Int32.Parse(thisTrashItem.garbageData.ID);
             player.currentTrash -= player.trashCountList[idx];
@@ -87,7 +88,7 @@ public class DragTrash : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
             }
             player.trashCountList[idx] = 0;
         }
-        else if (Vector2.Distance(inorganic.transform.position, myCanvas.transform.TransformPoint(pos)) < 50f) // phân loại sai
+        else if (Vector2.Distance(inorganic.transform.position, myCanvas.transform.TransformPoint(pos)) < 1f)
         {
             int idx = Int32.Parse(thisTrashItem.garbageData.ID);
             player.currentTrash -= player.trashCountList[idx];
