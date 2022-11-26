@@ -15,7 +15,7 @@ public class MainMenuController : MonoBehaviour
     public AudioClip buttonClip;
     AudioSource music;
 
-    //public ParticleSystem clickEffect;
+    public ParticleSystem clickEffect;
 
     private void Awake()
     {
@@ -31,18 +31,18 @@ public class MainMenuController : MonoBehaviour
         Time.timeScale = 1;
         defaultStartBtnSprite = startBtn.image.sprite;
         defaultExitBtnSprite = exitBtn.image.sprite;
-        //music.clip = buttonClip;
+        music.clip = buttonClip;
     }
 
     void Update()
     {
-        //if (Input.GetMouseButtonDown(0)) //Hieu ung khi click chuot
-        //{
-        //    music.Play();
-        //    Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        //    mousePos.z += 10;
-        //    Instantiate(clickEffect, mousePos, Quaternion.identity);
-        //}
+        if (Input.GetMouseButtonDown(0)) //Hieu ung khi click chuot
+        {
+            music.Play();
+            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            mousePos.z += 10;
+            Instantiate(clickEffect, mousePos, Quaternion.identity);
+        }
     }
     public void onHoverStartBtn()
     {
@@ -84,6 +84,6 @@ public class MainMenuController : MonoBehaviour
     void LoadGameScene()
     {
         Debug.Log("LoadScene");
-        //SceneManager.LoadScene(1);
+        SceneManager.LoadScene(1);
     }
 }

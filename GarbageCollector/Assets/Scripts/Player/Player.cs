@@ -31,6 +31,9 @@ public class Player : MonoBehaviour
 
     [SerializeField] ParticleSystem collectEffect;
 
+    [SerializeField] AudioSource music;
+    [SerializeField] AudioClip collectClip, fallClip;
+
     private void Awake()
     {
         Instance = this;
@@ -112,6 +115,8 @@ public class Player : MonoBehaviour
         Instantiate(collectEffect, transform.position, Quaternion.identity);
         TrashInventory.Instance.UpdateTrashCount(idx);
         GarbageSpawner.Instance.ChangePollutionMeter(-obj.GetComponent<Garbage>().pollutionAmount);
+        music.clip = collectClip;
+        music.Play();
         Destroy(obj);
         yield return new WaitForFixedUpdate();
     }
@@ -165,6 +170,8 @@ public class Player : MonoBehaviour
 
     public void Die()
     {
+        music.clip = fallClip;
+        music.Play();
         isCanMove = false;
         anim.Play("Die");
     }
