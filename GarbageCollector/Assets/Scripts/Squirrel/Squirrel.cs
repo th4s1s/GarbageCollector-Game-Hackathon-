@@ -101,7 +101,6 @@ public class Squirrel : MonoBehaviour
         if(obj != null) obj.GetComponent<Plant>().isDead = true;
         treeDes = true;
         anim.SetBool("run", true);
-        Debug.Log("A");
         isRoam = true;
         target = new Vector2(Random.Range(roamingZoneX.x, roamingZoneX.y), Random.Range(roamingZoneY.x, roamingZoneY.y));
         StopAllCoroutines();
