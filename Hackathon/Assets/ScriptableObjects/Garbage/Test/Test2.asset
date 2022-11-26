@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94ab938cb176cc54a996f437f4a3552d, type: 3}
   m_Name: Test2
   m_EditorClassIdentifier: 
-  ID: 
+  ID: Paper
   Icon: {fileID: 0}
   Price: 0
   Type: 0
