@@ -103,6 +103,7 @@ public class Player : MonoBehaviour
         if (obj.GetComponent<Garbage>().id == "6") idx = 6;
         trashCountList[idx]++;
         currentTrash++;
+        TrashInventory.Instance.UpdateTrashCount(idx);
         GarbageSpawner.Instance.ChangePollutionMeter(-obj.GetComponent<Garbage>().pollutionAmount);
         Destroy(obj);
         yield return new WaitForFixedUpdate();
@@ -126,22 +127,18 @@ public class Player : MonoBehaviour
     {
         plantTreeRangeSp.gameObject.SetActive(false);
         isPlantTree = false;
-        // for(int i =0; i<treeList.Count; i++)
-        // {
-            if (treeCountList[i]>0) 
-            {
-                Instantiate(treeList[i], transform.position, Quaternion.identity);
-                treeCountList[i]--;
-            }
-        // }
-        //Instantiate(tree, transform.position, Quaternion.identity);
+        if (i == -1) return;
+        if (treeCountList[i]>0) 
+        {
+            Instantiate(treeList[i], transform.position, Quaternion.identity);
+            treeCountList[i]--;
+        }
     }
 
     public void PreparePlant(int treeID)
     {
         this.treeID = treeID;
         plantTreeRangeSp.gameObject.SetActive(true);
-        // Debug.Log("Press Z to plant!");
     }
 
     public bool IsTreeNear()

@@ -46,3 +46,6 @@ TagManager:
   - name: Leaf
     uniqueID: 735817975
     locked: 0
+  - name: VFX
+    uniqueID: 937477593
+    locked: 0

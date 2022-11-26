@@ -12,6 +12,7 @@ public class GameController : MonoBehaviour
     float timeReduceOxy=0;
 
     [SerializeField] GameObject gameOverPanel;
+    [SerializeField] GameObject flashRiseObj, grass2Tilemap;
     public int Oxy
     {
         get { return oxy; }
@@ -46,10 +47,13 @@ public class GameController : MonoBehaviour
     {
         if (slider.value <= 0) Lose();
         if (slider.value >= slider.maxValue) Win();
+
+        //if (Input.GetKeyDown(KeyCode.M)) Win();
     }
     public void NextLevel()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        Debug.Log("Go to next level");
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void Restart()
@@ -61,6 +65,14 @@ public class GameController : MonoBehaviour
     public void Win()
     {
         Debug.Log("Win");
+        flashRiseObj.SetActive(true);
+        Invoke("SetActiveGrass2",1f);
+    }
+
+    public void SetActiveGrass2()
+    {
+        grass2Tilemap.SetActive(true);
+        Invoke("NextLevel",2);
     }
 
     public void Lose()

@@ -20,6 +20,9 @@ public class ShopButton : MonoBehaviour
             case 2:
                 requireCoin = 30;
                 break;
+            case 3:
+                requireCoin = 40;
+                break;
         }
         if (Player.Instance.coinInStage >= requireCoin)
         {

@@ -73,7 +73,7 @@ public class DragTrash : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     {
         Vector2 pos;
         RectTransformUtility.ScreenPointToLocalPointInRectangle(myCanvas.transform as RectTransform, Input.mousePosition, myCanvas.worldCamera, out pos);
-        // Debug.Log(Vector2.Distance(organic.transform.position, myCanvas.transform.TransformPoint(pos)));
+        
         if (Vector2.Distance(organic.transform.position, myCanvas.transform.TransformPoint(pos)) < 1f)
         {
             int idx = Int32.Parse(thisTrashItem.garbageData.ID);
@@ -82,12 +82,10 @@ public class DragTrash : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
             {
                 Player.Instance.coinInStage += thisTrashItem.garbageData.Price * player.trashCountList[idx];
             }
-            else 
-            {
-                Debug.Log("khong cong");
-            }
             player.trashCountList[idx] = 0;
+            TrashInventory.Instance.UpdateTrashCount(idx);
         }
+
         else if (Vector2.Distance(inorganic.transform.position, myCanvas.transform.TransformPoint(pos)) < 1f)
         {
             int idx = Int32.Parse(thisTrashItem.garbageData.ID);
@@ -96,11 +94,8 @@ public class DragTrash : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
             {
                 Player.Instance.coinInStage += thisTrashItem.garbageData.Price * player.trashCountList[idx];
             }
-            else 
-            {
-                Debug.Log("khong cong");
-            }
             player.trashCountList[idx] = 0;
+            TrashInventory.Instance.UpdateTrashCount(idx);
         }
         if (m_DraggingIcon != null)
             Destroy(m_DraggingIcon);
