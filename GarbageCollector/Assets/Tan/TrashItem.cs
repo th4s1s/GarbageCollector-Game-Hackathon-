@@ -15,16 +15,16 @@ public class TrashItem : MonoBehaviour
         else this.GetComponent<DragTrash>().enabled = true;
     }
 
-    public void UpdateSprite()
-    {
-        if (isCollected == false)
-        {
-            this.GetComponent<Image>().sprite = null; // dau cham hoi
-        }
-        else
-        {
-            this.GetComponent<Image>().sprite = null; // da co hinh anh
-        }
-    }
+    // public void UpdateSprite()
+    // {
+    //     if (isCollected == false)
+    //     {
+    //         this.GetComponent<Image>().sprite = null; // dau cham hoi
+    //     }
+    //     else
+    //     {
+    //         this.GetComponent<Image>().sprite = null; // da co hinh anh
+    //     }
+    // }
 
 }
