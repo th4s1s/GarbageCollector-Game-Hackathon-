@@ -90,7 +90,7 @@ public class Player : MonoBehaviour
 
     IEnumerator ICollect(GameObject obj)
     {
-        while (obj.transform.position != transform.position)
+        while (Vector3.Magnitude(obj.transform.position - transform.position)>0.2f)
         {
             obj.transform.position = Vector2.MoveTowards(obj.transform.position, transform.position, 10 * Time.fixedDeltaTime);
             yield return new WaitForFixedUpdate();
