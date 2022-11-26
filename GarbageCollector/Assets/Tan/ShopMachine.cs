@@ -35,6 +35,15 @@ public class ShopMachine : MonoBehaviour
             machineUISentence.gameObject.SetActive(true);
             canOpenMachine = true;
         }
+        if (Input.GetKeyDown(KeyCode.R) && isOpeningMachine == true)
+        {
+            isOpeningMachine = false;
+            machinePanel.gameObject.SetActive(false);
+            machineUISentence.gameObject.SetActive(false);
+            Player.Instance.isCanMove = true;
+            Time.timeScale = 1;
+            return;
+        }
         if (Input.GetKeyDown(KeyCode.R) && canOpenMachine == true)
         {
             isOpeningMachine = true;
@@ -43,13 +52,6 @@ public class ShopMachine : MonoBehaviour
             Player.Instance.isCanMove = false;
             Time.timeScale = 0;
         }
-        if (Input.GetKeyDown(KeyCode.Escape) && isOpeningMachine == true)
-        {
-            isOpeningMachine = false;
-            machinePanel.gameObject.SetActive(false);
-            machineUISentence.gameObject.SetActive(false);
-            Player.Instance.isCanMove = true;
-            Time.timeScale = 1;
-        }
+
     }
 }

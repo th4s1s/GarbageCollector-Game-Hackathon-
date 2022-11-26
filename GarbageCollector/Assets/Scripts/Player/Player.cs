@@ -116,14 +116,13 @@ public class Player : MonoBehaviour
 
     void CheckTrash()
     {
-        // Debug.Log("CheckTrash");
         Collider2D coll = Physics2D.OverlapCircle(transform.position, collectRadius, trashLayer);
         if (coll != null)
         {
             if (currentTrash < capacityTrash)
                 StartCoroutine(ICollect(coll.gameObject));
-            else 
-                Debug.Log("FULL");
+            // else 
+            //     Debug.Log("FULL");
         }
     }
 

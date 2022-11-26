@@ -10,6 +10,7 @@ public class PlantListButton : MonoBehaviour
     {
         if (Player.Instance.isNear == false) 
             Player.Instance.PlantTree(idx);
+        this.transform.parent.gameObject.SetActive(false);
     }
 
     void Update()
