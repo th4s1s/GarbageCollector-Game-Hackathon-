@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 353797687}
   - component: {fileID: 353797686}
   - component: {fileID: 353797688}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: "r\xE1c 3"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -300,10 +300,10 @@ MonoBehaviour:
   checkTreeRadius: 4
   trashLayer:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 64
   treeLayer:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 64
   plantTreeRangeSp: {fileID: 1848099918}
 --- !u!50 &492340238
 Rigidbody2D:
@@ -390,7 +390,7 @@ GameObject:
   - component: {fileID: 1219060066}
   - component: {fileID: 1219060065}
   - component: {fileID: 1219060069}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: "r\xE1c 3 (1)"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
