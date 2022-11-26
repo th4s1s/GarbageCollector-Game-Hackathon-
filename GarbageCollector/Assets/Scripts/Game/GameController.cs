@@ -57,13 +57,13 @@ public class GameController : MonoBehaviour
     public void NextLevel()
     {
         Debug.Log("Go to next level");
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void Restart()
     {
         Debug.Log("Restart Level");
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void Win()
