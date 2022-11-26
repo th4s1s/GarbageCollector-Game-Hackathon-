@@ -16,7 +16,13 @@ public class Player : MonoBehaviour
     float xdir, ydir;
     bool isWalking;
 
+    public List<int> trashCountList = new List<int>();
+
     public Weaption weaption;
+    public float collectRadius;
+
+    [SerializeField] LayerMask trashLayer;
+
 
     private void Update()
     {
@@ -31,7 +37,7 @@ public class Player : MonoBehaviour
         if (xdir > 0) transform.localScale = new Vector3(-1, 1, 1);
         if (xdir < 0) transform.localScale = new Vector3(1, 1, 1);
 
-
+        if (Input.GetKeyDown(KeyCode.Space)) CheckTrash();
     }
 
     void Walking()
@@ -42,13 +48,30 @@ public class Player : MonoBehaviour
         //anim.SetFloat("ySpeed", ydir);
     }
 
-    void Collect()
+    IEnumerator ICollect(GameObject obj)
     {
-
+        while (obj.transform.position != transform.position)
+        {
+            obj.transform.position = Vector2.MoveTowards(obj.transform.position, transform.position, 5 * Time.fixedDeltaTime);
+            yield return new WaitForFixedUpdate();
+        }
+        Destroy(obj);
+        yield return new WaitForFixedUpdate();
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+
+    void CheckTrash()
     {
-        
+        Debug.Log("CheckTrash");
+        Collider2D coll = Physics2D.OverlapCircle(transform.position, collectRadius, trashLayer);
+        if (coll != null)
+        {
+            StartCoroutine(ICollect(coll.gameObject));
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawSphere(transform.position, collectRadius);
     }
 }
