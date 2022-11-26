@@ -3066,7 +3066,6 @@ MonoBehaviour:
   isWalking: 0
   isPlantTree: 0
   trashCountList: 00000000000000000000000000000000000000000000000000000000
-  weaption: 0
   collectRadius: 3
   checkTreeRadius: 4
   trashLayer:
@@ -3077,6 +3076,7 @@ MonoBehaviour:
     m_Bits: 64
   plantTreeRangeSp: {fileID: 1848099918}
   collectRangeObj: {fileID: 788090288}
+  treeList: []
 --- !u!50 &492340238
 Rigidbody2D:
   serializedVersion: 4
