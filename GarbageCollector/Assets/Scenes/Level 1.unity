@@ -9049,7 +9049,7 @@ MonoBehaviour:
     m_Bits: 64
   treeLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 192
   plantTreeRangeSp: {fileID: 129940173}
   collectRangeObj: {fileID: 568689407}
   treeList:
