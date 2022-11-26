@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7338523626961235443}
   - component: {fileID: 7338523626961235442}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: leaf  5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7338523627022030496}
   - component: {fileID: 7338523627022030499}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: leaf 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -173,7 +173,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7338523627170285056}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Banana_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -206,7 +206,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7338523627177875093}
   - component: {fileID: 7338523627177875092}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: leaf 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -288,7 +288,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7338523627182647767}
   - component: {fileID: 7338523627182647766}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -370,7 +370,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7338523627480266981}
   - component: {fileID: 7338523627480266980}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Circle (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -451,7 +451,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7338523627605707237}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Banana_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -486,9 +486,9 @@ GameObject:
   - component: {fileID: 7338523627763399726}
   - component: {fileID: 8745250203996047037}
   - component: {fileID: 4816259482964885413}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BananaTree
-  m_TagString: Untagged
+  m_TagString: Tree
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -571,7 +571,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7338523627857366936}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Banana_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -610,7 +610,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7338523627888057167}
   - component: {fileID: 7338523627888057166}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: leaf 6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -692,7 +692,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7338523628048744392}
   - component: {fileID: 7338523628048744395}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: leaf 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -774,7 +774,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7338523628160531744}
   - component: {fileID: 7338523628160531747}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: leaf 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -856,7 +856,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7338523628649151232}
   - component: {fileID: 7338523628649151235}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: medium
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -938,7 +938,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7338523628681030196}
   - component: {fileID: 7338523628681030199}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: baby
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1020,7 +1020,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7338523628694602536}
   - component: {fileID: 7338523628694602539}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Circle (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1102,7 +1102,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7338523628879965900}
   - component: {fileID: 7338523628879965903}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Circle (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

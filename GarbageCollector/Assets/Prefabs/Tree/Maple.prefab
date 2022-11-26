@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 877499406835592037}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Stage1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   m_Component:
   - component: {fileID: 866131414977431816}
   - component: {fileID: 3150611116929275317}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -124,7 +124,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5006316175286371439}
   - component: {fileID: 6842477250815390026}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -206,7 +206,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4926326379232784058}
   - component: {fileID: 4205355899104894544}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Leaf (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -288,7 +288,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4812292251331042488}
   - component: {fileID: 9077986741877562436}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Circle (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -370,7 +370,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5096390205332574608}
   - component: {fileID: 454590665908256832}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Body (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -452,7 +452,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7524474639147231516}
   - component: {fileID: 7202385502687086620}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Body (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -534,7 +534,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8417212685734776225}
   - component: {fileID: 5497040771318090721}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -616,7 +616,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6103000984444218789}
   - component: {fileID: 6098648129510249635}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Circle (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -697,7 +697,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8197808473055930409}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Stage3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -732,7 +732,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2017525036673274979}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Stage2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -767,7 +767,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1622443323269427360}
   - component: {fileID: 8821191106016497651}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Body (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -851,9 +851,9 @@ GameObject:
   - component: {fileID: 1174596570062646491}
   - component: {fileID: 1643871118389564328}
   - component: {fileID: 2358658964929638615}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Maple
-  m_TagString: Untagged
+  m_TagString: Tree
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -937,7 +937,7 @@ GameObject:
   m_Component:
   - component: {fileID: 191838575187562909}
   - component: {fileID: 4109014051394446167}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Leaf
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1019,7 +1019,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1396579358779037249}
   - component: {fileID: 8193551047772298143}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}

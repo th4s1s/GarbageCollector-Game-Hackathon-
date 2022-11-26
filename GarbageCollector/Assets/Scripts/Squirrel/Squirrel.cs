@@ -14,11 +14,13 @@ public class Squirrel : MonoBehaviour
     private bool isRoam;
     private bool yeet;
     [SerializeField] Animator anim;
+    SpriteRenderer sprite;
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        sprite = gameObject.GetComponent<SpriteRenderer>();
         treeToDestroy = null;
         isRoam = true;
         yeet = false;
@@ -54,7 +56,7 @@ public class Squirrel : MonoBehaviour
         }
         else if (isRoam)
         {
-            if (Vector2.Distance((Vector2)transform.position, target) < 0.02f)
+            if (Vector2.Distance((Vector2)transform.position, target) < 0.05f)
             {
                 Decide();
             }
@@ -93,7 +95,7 @@ public class Squirrel : MonoBehaviour
     IEnumerator DestroyTree(GameObject obj)
     {
         yield return new WaitForSeconds(5);
-        Destroy(obj);
+        if(obj.GetComponent<Plant>() != null) obj.GetComponent<Plant>().isDead = true;
         anim.SetBool("run", true);
         Decide();
     }
@@ -121,5 +123,22 @@ public class Squirrel : MonoBehaviour
         }
         isRoam = true;
         target = new Vector2(Random.Range(roamingZoneX.x, roamingZoneX.y), Random.Range(roamingZoneY.x, roamingZoneY.y));
+    }
+
+    IEnumerator FadeOut()
+    {
+        for(float f = 1f; f >= -0.05f; f -= 0.05f)
+        {
+            Color c = sprite.material.color;
+            c.a = f;
+            sprite.material.color = c;
+            yield return new WaitForSeconds(0.05f);
+        }
+        SquirrelSpawner.Instance.Cast(transform.position);
+        Destroy(gameObject);
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        StartCoroutine(FadeOut());
     }
 }
