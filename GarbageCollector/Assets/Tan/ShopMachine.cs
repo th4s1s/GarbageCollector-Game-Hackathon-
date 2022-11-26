@@ -40,12 +40,14 @@ public class ShopMachine : MonoBehaviour
             isOpeningMachine = true;
             machinePanel.gameObject.SetActive(true);
             machineUISentence.gameObject.SetActive(false);
+            Player.Instance.isCanMove = false;
         }
         if (Input.GetKeyDown(KeyCode.Escape) && isOpeningMachine == true)
         {
             isOpeningMachine = false;
             machinePanel.gameObject.SetActive(false);
             machineUISentence.gameObject.SetActive(false);
+            Player.Instance.isCanMove = true;
         }
     }
 }

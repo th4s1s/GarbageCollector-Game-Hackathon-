@@ -54,7 +54,7 @@ public class GameController : MonoBehaviour
 
     public void Win()
     {
-        //Todo
+        Debug.Log("Win");
     }
 
     public void Lose()
