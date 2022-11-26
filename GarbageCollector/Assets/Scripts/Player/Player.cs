@@ -28,6 +28,9 @@ public class Player : MonoBehaviour
     [SerializeField] SpriteRenderer plantTreeRangeSp;
     [SerializeField] GameObject collectRangeObj;
 
+    [SerializeField] List<GameObject> treeList = new List<GameObject>();
+    int treeID;
+
     private void Awake()
     {
         Instance = this;
@@ -115,11 +118,16 @@ public class Player : MonoBehaviour
         plantTreeRangeSp.gameObject.SetActive(false);
         isPlantTree = false;
         Debug.Log("Plant");
+        for(int i =0; i<treeList.Count; i++)
+        {
+            if (i == treeID) Instantiate(treeList[i], transform.position, Quaternion.identity);
+        }
         //Instantiate(tree, transform.position, Quaternion.identity);
     }
 
-    public void PreparePlant()
+    public void PreparePlant(int treeID)
     {
+        this.treeID = treeID;
         plantTreeRangeSp.gameObject.SetActive(true);
         Debug.Log("Press Z to plant!");
     }

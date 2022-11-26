@@ -10,7 +10,7 @@ public class PlantButton : MonoBehaviour
         if (Player.Instance.isPlantTree == false)
         {
             Player.Instance.isPlantTree = true;
-            Player.Instance.PreparePlant();
+            Player.Instance.PreparePlant(1);
         }
     }
 }
