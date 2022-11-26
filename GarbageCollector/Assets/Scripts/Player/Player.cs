@@ -5,11 +5,6 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public static Player Instance { get; private set; }
-    public enum Weaption
-    {
-        none,
-        vending,
-    }
 
     public int coinInStage;
     [SerializeField] float speed;
@@ -22,12 +17,15 @@ public class Player : MonoBehaviour
 
     public List<int> trashCountList = new List<int>() {0,0,0,0,0,0,0};
 
-    public Weaption weaption;
     public float collectRadius, checkTreeRadius;
 
     [SerializeField] LayerMask trashLayer, treeLayer;
 
     [SerializeField] SpriteRenderer plantTreeRangeSp;
+    [SerializeField] GameObject collectRangeObj;
+
+    [SerializeField] List<GameObject> treeList = new List<GameObject>();
+    int treeID;
 
     private void Awake()
     {
@@ -38,9 +36,11 @@ public class Player : MonoBehaviour
         isPlantTree = false;
         isWalking = false;
         capacityTrash = 10;
+        collectRangeObj.transform.localScale = new Vector3(1, 1, 1) * collectRadius/3;
     }
     private void Update()
     {
+        collectRangeObj.transform.localScale = new Vector3(1, 1, 1) * collectRadius / 1.7f;
         xdir = Input.GetAxisRaw("Horizontal");
         ydir = Input.GetAxisRaw("Vertical");
 
@@ -87,9 +87,9 @@ public class Player : MonoBehaviour
 
     IEnumerator ICollect(GameObject obj)
     {
-        while (obj.transform.position != transform.position)
+        while (Vector3.Magnitude(obj.transform.position - transform.position)>0.2f)
         {
-            obj.transform.position = Vector2.MoveTowards(obj.transform.position, transform.position, 5 * Time.fixedDeltaTime);
+            obj.transform.position = Vector2.MoveTowards(obj.transform.position, transform.position, 10 * Time.fixedDeltaTime);
             yield return new WaitForFixedUpdate();
         }
         int idx = 0;
@@ -126,11 +126,16 @@ public class Player : MonoBehaviour
         plantTreeRangeSp.gameObject.SetActive(false);
         isPlantTree = false;
         Debug.Log("Plant");
+        for(int i =0; i<treeList.Count; i++)
+        {
+            if (i == treeID) Instantiate(treeList[i], transform.position, Quaternion.identity);
+        }
         //Instantiate(tree, transform.position, Quaternion.identity);
     }
 
-    public void PreparePlant()
+    public void PreparePlant(int treeID)
     {
+        this.treeID = treeID;
         plantTreeRangeSp.gameObject.SetActive(true);
         Debug.Log("Press Z to plant!");
     }
@@ -152,6 +157,6 @@ public class Player : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawSphere(transform.position, checkTreeRadius);
+        Gizmos.DrawSphere(transform.position, collectRadius);
     }
 }
