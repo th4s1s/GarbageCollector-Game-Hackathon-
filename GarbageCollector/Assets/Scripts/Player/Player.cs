@@ -6,14 +6,16 @@ public class Player : MonoBehaviour
 {
     public static Player Instance { get; private set; }
 
+    public int coinInStage;
     [SerializeField] float speed;
     [SerializeField] Animator anim;
 
     float xdir, ydir;
     [SerializeField] bool isWalking;
-    public bool isPlantTree;
+    public bool isPlantTree, isCanMove;
+    public int currentTrash, capacityTrash;
 
-    public List<int> trashCountList = new List<int>();
+    public List<int> trashCountList = new List<int>() {0,0,0,0,0,0,0};
 
     public float collectRadius, checkTreeRadius;
 
@@ -33,43 +35,49 @@ public class Player : MonoBehaviour
     {
         isPlantTree = false;
         isWalking = false;
-        collectRangeObj.transform.localScale = new Vector3(1, 1, 1) * collectRadius/3;
+        isCanMove = true;
+        capacityTrash = 10;
+        collectRangeObj.transform.localScale = new Vector3(1, 1, 1) * collectRadius/1.7f;
     }
     private void Update()
     {
-        collectRangeObj.transform.localScale = new Vector3(1, 1, 1) * collectRadius / 1.7f;
-        xdir = Input.GetAxisRaw("Horizontal");
-        ydir = Input.GetAxisRaw("Vertical");
-
-        if (xdir != 0 || ydir != 0) isWalking = true;
-        else isWalking = false;
-        //anim.SetBool("isWalking", isWalking);
-        if (isWalking) Walking();
-
-        if (xdir > 0) transform.localScale = new Vector3(1, 1, 1);
-        if (xdir < 0) transform.localScale = new Vector3(-1, 1, 1);
-
-        if (Input.GetKeyDown(KeyCode.Space)) CheckTrash();
-        
-        // if (Input.GetKeyDown(KeyCode.X) && isPlantTree == false)
-        // {
-        //     isPlantTree = true;
-        //     PreparePlant();
-        // }
-
-        if (isPlantTree)
+        if (isCanMove)
         {
-            Debug.Log(IsTreeNear());
-            if (Input.GetKeyDown(KeyCode.Z) && IsTreeNear()==false) PlantTree();
-        }
+            xdir = Input.GetAxisRaw("Horizontal");
+            ydir = Input.GetAxisRaw("Vertical");
 
-        if (isWalking)
-        {
-            anim.Play("Walk");
-        }
-        else
-        {
-            anim.Play("Idle");
+            if (xdir != 0 || ydir != 0) isWalking = true;
+            else isWalking = false;
+            //anim.SetBool("isWalking", isWalking);
+            if (isWalking) Walking();
+
+            if (xdir > 0) transform.localScale = new Vector3(1, 1, 1);
+            if (xdir < 0) transform.localScale = new Vector3(-1, 1, 1);
+
+            if (Input.GetKeyDown(KeyCode.Space)) CheckTrash();
+
+            // if (Input.GetKeyDown(KeyCode.X) && isPlantTree == false)
+            // {
+            //     isPlantTree = true;
+            //     PreparePlant();
+            // }
+
+            if (isPlantTree)
+            {
+                Debug.Log(IsTreeNear());
+                if (Input.GetKeyDown(KeyCode.Z) && IsTreeNear() == false) PlantTree();
+            }
+
+            if (Input.GetKeyDown(KeyCode.L)) GameController.Instance.Lose();
+
+            if (isWalking)
+            {
+                anim.Play("Walk");
+            }
+            else
+            {
+                anim.Play("Idle");
+            }
         }
     }
 
@@ -89,8 +97,16 @@ public class Player : MonoBehaviour
             obj.transform.position = Vector2.MoveTowards(obj.transform.position, transform.position, 10 * Time.fixedDeltaTime);
             yield return new WaitForFixedUpdate();
         }
-        if (obj.GetComponent<Garbage>().id == "Banana") trashCountList[0]++;
-        if (obj.GetComponent<Garbage>().id == "Paper") trashCountList[1]++;
+        int idx = 0;
+        if (obj.GetComponent<Garbage>().id == "0") idx = 0;
+        if (obj.GetComponent<Garbage>().id == "1") idx = 1;
+        if (obj.GetComponent<Garbage>().id == "2") idx = 2;
+        if (obj.GetComponent<Garbage>().id == "3") idx = 3;
+        if (obj.GetComponent<Garbage>().id == "4") idx = 4;
+        if (obj.GetComponent<Garbage>().id == "5") idx = 5;
+        if (obj.GetComponent<Garbage>().id == "6") idx = 6;
+        trashCountList[idx]++;
+        currentTrash++;
         GarbageSpawner.Instance.ChangePollutionMeter(-obj.GetComponent<Garbage>().pollutionAmount);
         Destroy(obj);
         yield return new WaitForFixedUpdate();
@@ -99,11 +115,14 @@ public class Player : MonoBehaviour
 
     void CheckTrash()
     {
-        Debug.Log("CheckTrash");
+        // Debug.Log("CheckTrash");
         Collider2D coll = Physics2D.OverlapCircle(transform.position, collectRadius, trashLayer);
         if (coll != null)
         {
-            StartCoroutine(ICollect(coll.gameObject));
+            if (currentTrash < capacityTrash)
+                StartCoroutine(ICollect(coll.gameObject));
+            else 
+                Debug.Log("FULL");
         }
     }
 
@@ -139,6 +158,18 @@ public class Player : MonoBehaviour
             plantTreeRangeSp.color = new Color(0, 1, 0, 0.25f);
             return false;
         }
+    }
+
+    public void Die()
+    {
+        isCanMove = false;
+        anim.Play("Die");
+    }
+
+    public void SetCollectRange(float rangeAdd)
+    {
+        collectRadius += rangeAdd;
+        collectRangeObj.transform.localScale = new Vector3(1, 1, 1) * collectRadius / 1.7f;
     }
 
     private void OnDrawGizmos()
