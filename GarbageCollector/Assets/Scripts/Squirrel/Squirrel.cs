@@ -28,14 +28,13 @@ public class Squirrel : MonoBehaviour
         Vector2 dir = transform.position - player.position;
         if (dir.magnitude < 2f)
         {
-            Debug.Log("Run");
             StopAllCoroutines();
             isRoam = true;
             transform.Translate(dir.normalized * speed * Time.deltaTime);
+            target = new Vector2(Random.Range(roamingZoneX.x, roamingZoneX.y), Random.Range(roamingZoneY.x, roamingZoneY.y));
         }
         else if (isRoam)
         {
-            Debug.Log("Roam");
             if (Vector2.Distance((Vector2)transform.position, target) < 0.02f)
             {
                 Decide();
@@ -55,7 +54,7 @@ public class Squirrel : MonoBehaviour
 
     void RunToTree()
     {
-        if(Vector2.Distance((Vector2)transform.position, target) < 0.1f)
+        if(Vector2.Distance((Vector2)transform.position, target) < 0.01f)
         {
             StartCoroutine(DestroyTree(treeToDestroy));
         }
@@ -85,8 +84,9 @@ public class Squirrel : MonoBehaviour
         {
             foreach(GameObject obj in trees)
             {
-                if(obj.GetComponent<Plant>() != null)
+                if(obj.GetComponent<Plant>()?.isMature == true)
                 {
+                    Debug.Log("found");
                     isRoam = false;
                     treeToDestroy = obj;
                     target = obj.transform.position;
